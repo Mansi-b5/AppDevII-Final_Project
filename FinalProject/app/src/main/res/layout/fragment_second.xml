@@ -7,21 +7,64 @@
     tools:context=".SecondFragment">
 
     <TextView
-        android:id="@+id/textview_second"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/button_second"
+        android:id="@+id/textView"
+        android:layout_width="409dp"
+        android:layout_height="62dp"
+        android:text="NAV BAR"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button_second"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/previous"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_second" />
+    <LinearLayout
+        android:layout_width="412dp"
+        android:layout_height="138dp"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="63dp">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="42dp"
+            android:layout_height="39dp"
+            app:srcCompat="@drawable/ic_baseline_location_on_24" />
+
+        <LinearLayout
+            android:layout_width="299dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="298dp"
+                android:layout_height="40dp"
+                android:text="Address" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:text="Open Hours" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Phone Number - Map Link" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Select"
+            android:textSize="9sp" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="409dp"
+        android:layout_height="528dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="201dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

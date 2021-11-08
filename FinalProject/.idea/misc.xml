@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Computer Science Semester 5-Fall 2021/Application Development 2/Github-AppDev2/Project/AppDevII-Final_Project/FinalProject/app/src/main/res/layout/activity_main.xml" value="0.2427536231884058" />
+        <entry key="..\:/Computer Science Semester 5-Fall 2021/Application Development 2/Github-AppDev2/Project/AppDevII-Final_Project/FinalProject/app/src/main/res/layout/fragment_first.xml" value="0.2427536231884058" />
+        <entry key="..\:/Computer Science Semester 5-Fall 2021/Application Development 2/Github-AppDev2/Project/AppDevII-Final_Project/FinalProject/app/src/main/res/layout/fragment_menu.xml" value="0.33645833333333336" />
+        <entry key="..\:/Computer Science Semester 5-Fall 2021/Application Development 2/Github-AppDev2/Project/AppDevII-Final_Project/FinalProject/app/src/main/res/layout/fragment_menu_list.xml" value="0.33645833333333336" />
+        <entry key="..\:/Computer Science Semester 5-Fall 2021/Application Development 2/Github-AppDev2/Project/AppDevII-Final_Project/FinalProject/app/src/main/res/layout/fragment_second.xml" value="0.2427536231884058" />
+        <entry key="..\:/Computer Science Semester 5-Fall 2021/Application Development 2/Github-AppDev2/Project/AppDevII-Final_Project/FinalProject/app/src/main/res/layout/fragment_third.xml" value="0.20729166666666668" />
         <entry key="..\:/Users/Daniel/Desktop/Github/Repos/AppDevII-Final_Project/FinalProject/app/src/main/res/layout/fragment_first.xml" value="0.33" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_menu_list.xml" value="0.1" />

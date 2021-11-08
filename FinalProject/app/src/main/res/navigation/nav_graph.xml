@@ -3,27 +3,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/HomeFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
+        android:id="@+id/HomeFragment"
         android:name="ca.qc.johnabbott.finalproject.FirstFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first">
-
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_HomeFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
+        <action
+            android:id="@+id/action_HomeFragment_to_Contact_LocationFragment"
+            app:destination="@id/Contact_LocationFragment" />
+        <action
+            android:id="@+id/action_HomeFragment_to_CartFragment"
+            app:destination="@id/CartFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
+        android:id="@+id/Contact_LocationFragment"
         android:name="ca.qc.johnabbott.finalproject.SecondFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second">
-
         <action
-            android:id="@+id/action_SecondFragment_to_menuFragment"
+            android:id="@+id/action_Contact_LocationFragment_to_menuFragment"
             app:destination="@id/menuFragment" />
+        <action
+            android:id="@+id/action_Contact_LocationFragment_to_CartFragment"
+            app:destination="@id/CartFragment" />
+        <action
+            android:id="@+id/action_Contact_LocationFragment_to_HomeFragment"
+            app:destination="@id/HomeFragment" />
     </fragment>
 
     <fragment
@@ -32,20 +42,75 @@
         android:label="fragment_menu_list"
         tools:layout="@layout/fragment_menu_list">
         <action
-            android:id="@+id/action_menuFragment_to_thirdFragment"
-            app:destination="@id/thirdFragment" />
+            android:id="@+id/action_menuFragment_to_singleItemFragment"
+            app:destination="@id/singleItemFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_HomeFragment"
+            app:destination="@id/HomeFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_Contact_LocationFragment"
+            app:destination="@id/Contact_LocationFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_CartFragment"
+            app:destination="@id/CartFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/thirdFragment"
+        android:id="@+id/CartFragment"
         android:name="ca.qc.johnabbott.finalproject.ThirdFragment"
         android:label="fragment_third"
         tools:layout="@layout/fragment_third" >
-
         <action
-            android:id="@+id/action_thirdFragment_to_firstFragment"
-            app:destination="@id/FirstFragment" />
-
+            android:id="@+id/action_CartFragment_to_checkOutFragment"
+            app:destination="@id/checkOutFragment" />
+        <action
+            android:id="@+id/action_CartFragment_to_singleItemFragment"
+            app:destination="@id/singleItemFragment" />
+        <action
+            android:id="@+id/action_CartFragment_to_HomeFragment2"
+            app:destination="@id/HomeFragment" />
+        <action
+            android:id="@+id/action_CartFragment_to_Contact_LocationFragment"
+            app:destination="@id/Contact_LocationFragment" />
+        <action
+            android:id="@+id/action_CartFragment_to_menuFragment2"
+            app:destination="@id/menuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/checkOutFragment"
+        android:name="ca.qc.johnabbott.finalproject.CheckOutFragment"
+        android:label="fragment_check_out"
+        tools:layout="@layout/fragment_check_out" >
+        <action
+            android:id="@+id/action_checkOutFragment_to_HomeFragment"
+            app:destination="@id/HomeFragment" />
+        <action
+            android:id="@+id/action_checkOutFragment_to_Contact_LocationFragment"
+            app:destination="@id/Contact_LocationFragment" />
+        <action
+            android:id="@+id/action_checkOutFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
+        <action
+            android:id="@+id/action_checkOutFragment_to_CartFragment"
+            app:destination="@id/CartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/singleItemFragment"
+        android:name="ca.qc.johnabbott.finalproject.SingleItemFragment"
+        android:label="fragment_single_item"
+        tools:layout="@layout/fragment_single_item" >
+        <action
+            android:id="@+id/action_singleItemFragment_to_HomeFragment"
+            app:destination="@id/HomeFragment" />
+        <action
+            android:id="@+id/action_singleItemFragment_to_Contact_LocationFragment"
+            app:destination="@id/Contact_LocationFragment" />
+        <action
+            android:id="@+id/action_singleItemFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
+        <action
+            android:id="@+id/action_singleItemFragment_to_CartFragment"
+            app:destination="@id/CartFragment" />
     </fragment>
 
 </navigation>
