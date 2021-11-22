@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/FirstFragment">
+
+    <fragment
+        android:id="@+id/FirstFragment"
+        android:name="ca.qc.johnabbott.finalproject.UI.FirstFragment"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_first">
+
+        <action
+            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/SecondFragment"
+        android:name="ca.qc.johnabbott.finalproject.UI.SecondFragment"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/fragment_second">
+
+        <action
+            android:id="@+id/action_SecondFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="ca.qc.johnabbott.finalproject.UI.MenuFragment"
+        android:label="fragment_menu_list"
+        tools:layout="@layout/fragment_menu_list">
+        <action
+            android:id="@+id/action_menuFragment_to_thirdFragment"
+            app:destination="@id/thirdFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/thirdFragment"
+        android:name="ca.qc.johnabbott.finalproject.UI.ThirdFragment"
+        android:label="fragment_third"
+        tools:layout="@layout/fragment_third" >
+
+        <action
+            android:id="@+id/action_thirdFragment_to_firstFragment"
+            app:destination="@id/FirstFragment" />
+
+    </fragment>
+
+</navigation>
