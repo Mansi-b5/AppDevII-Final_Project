@@ -57,11 +57,11 @@ public class MainActivity extends AppCompatActivity {
                         fragment = new HomeFragment();;
                         break;
 
-                    case R.id.ic_cart:
+                    case R.id.ic_contact:
                         fragment = new ContactFragment();;
                         break;
 
-                    case R.id.ic_contact:
+                    case R.id.ic_cart:
                         fragment = new CartFragment();;
                         break;
                 }
