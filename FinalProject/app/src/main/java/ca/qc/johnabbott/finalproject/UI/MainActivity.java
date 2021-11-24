@@ -17,6 +17,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import ca.qc.johnabbott.finalproject.CartItemListFragment;
 import ca.qc.johnabbott.finalproject.R;
 import ca.qc.johnabbott.finalproject.databinding.ActivityMainBinding;
 
@@ -57,12 +58,12 @@ public class MainActivity extends AppCompatActivity {
                         fragment = new HomeFragment();;
                         break;
 
-                    case R.id.ic_cart:
+                    case R.id.ic_contact:
                         fragment = new ContactFragment();;
                         break;
 
-                    case R.id.ic_contact:
-                        fragment = new CartFragment();;
+                    case R.id.ic_cart:
+                        fragment = new CartItemListFragment();;
                         break;
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.fl_wrapper,fragment).commit();
