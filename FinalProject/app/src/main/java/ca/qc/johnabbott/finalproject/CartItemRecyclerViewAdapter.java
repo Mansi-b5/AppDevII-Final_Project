@@ -3,9 +3,7 @@ package ca.qc.johnabbott.finalproject;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import ca.qc.johnabbott.finalproject.Model.CartItem;
 import ca.qc.johnabbott.finalproject.databinding.ListItemCartItemBinding;
@@ -34,7 +32,7 @@ public class CartItemRecyclerViewAdapter extends RecyclerView.Adapter<CartItemRe
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.bind(mValues.get(position));
+        holder.bind(mValues.get(position), position);
     }
 
     @Override
@@ -44,7 +42,7 @@ public class CartItemRecyclerViewAdapter extends RecyclerView.Adapter<CartItemRe
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private ListItemCartItemBinding binding;
+        private final ListItemCartItemBinding binding;
         private CartItem mItem;
 
         public ViewHolder(ListItemCartItemBinding binding) {
@@ -52,14 +50,28 @@ public class CartItemRecyclerViewAdapter extends RecyclerView.Adapter<CartItemRe
             this.binding = binding;
         }
 
-        public void bind(CartItem cartItem) {
+        public void bind(CartItem cartItem, int position) {
             mItem = cartItem;
             binding.imageView3.setImageResource(R.drawable.cart_placeholder_image);
             binding.titleTextView.setText(cartItem.getProduct().getName());
             binding.descriptionTextView.setText(cartItem.getProduct().getDescription());
             NumberFormat formatter = NumberFormat.getCurrencyInstance();
             binding.priceTextView.setText(formatter.format(cartItem.getUnitPrice() * cartItem.getQuantity()));
-            binding.quantityTextView.append(String.valueOf(cartItem.getQuantity()));
-        }
+            binding.quantityNumberTextView.setText(String.valueOf(cartItem.getQuantity()));
+
+            binding.quantityMinusButton.setOnClickListener(view -> {
+                int old = mItem.getQuantity();
+                if(old <= 1) {
+                    return;
+                }
+                mItem.setQuantity(--old);
+                notifyItemChanged(position);
+            });
+
+            binding.quantityPlusButton.setOnClickListener(view -> {
+                int old = mItem.getQuantity();
+                mItem.setQuantity(++old);
+                notifyItemChanged(position);
+            }); }
     }
 }
