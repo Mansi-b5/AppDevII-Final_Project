@@ -55,7 +55,7 @@ public class LocationListAdapter extends RecyclerView.Adapter<LocationListAdapte
             binding.address.setText(location.getAddress());
             binding.hours.setText(location.getHours());
             binding.phone.setText(location.getPhoneNumber());
-            binding.map.setText(location.getMap());
+
         }
 
 
