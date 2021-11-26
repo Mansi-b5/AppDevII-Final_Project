@@ -27,7 +27,22 @@
         app:radius="6dp"
         app:slideInterval="3000"
         app:strokeColor="#FF777777"
-        app:strokeWidth="1dp" />
+        app:strokeWidth="1dp" >
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/firstDeal_cardview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/black">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="146dp"
+                android:layout_height="58dp"
+                android:foregroundTint="@color/white"
+                android:text="Deals" />
+        </androidx.cardview.widget.CardView>
+    </com.synnapps.carouselview.CarouselView>
 
     <LinearLayout
         android:id="@+id/linearLayout"
