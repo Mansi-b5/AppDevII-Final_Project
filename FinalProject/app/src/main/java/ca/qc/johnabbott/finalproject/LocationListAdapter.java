@@ -1,7 +1,10 @@
 package ca.qc.johnabbott.finalproject;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -10,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import ca.qc.johnabbott.finalproject.Model.Location;
+import ca.qc.johnabbott.finalproject.UI.MainActivity;
 import ca.qc.johnabbott.finalproject.databinding.ListItemLocationBinding;
 
 public class LocationListAdapter extends RecyclerView.Adapter<LocationListAdapter.ViewHolder> {
@@ -55,6 +59,17 @@ public class LocationListAdapter extends RecyclerView.Adapter<LocationListAdapte
             binding.address.setText(location.getAddress());
             binding.hours.setText(location.getHours());
             binding.phone.setText(location.getPhoneNumber());
+
+            binding.locationImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String uri = "https://goo.gl/maps/P9CxKRDoxcwVZ4rWA";
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+                    intent.setPackage("com.google.android.apps.maps");
+
+                    context.startActivity(intent);
+                }
+            });
 
         }
 
