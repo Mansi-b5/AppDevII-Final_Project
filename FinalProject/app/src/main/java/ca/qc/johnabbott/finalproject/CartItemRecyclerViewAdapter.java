@@ -1,5 +1,6 @@
 package ca.qc.johnabbott.finalproject;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -23,8 +24,9 @@ public class CartItemRecyclerViewAdapter extends RecyclerView.Adapter<CartItemRe
         mValues = items;
     }
 
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         return new ViewHolder(ListItemCartItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
 
@@ -72,6 +74,12 @@ public class CartItemRecyclerViewAdapter extends RecyclerView.Adapter<CartItemRe
                 int old = mItem.getQuantity();
                 mItem.setQuantity(++old);
                 notifyItemChanged(position);
-            }); }
+            });
+
+            binding.removeButton.setOnClickListener(view -> {
+                mValues.remove(position);
+                notifyItemRemoved(position);
+            });
+        }
     }
 }

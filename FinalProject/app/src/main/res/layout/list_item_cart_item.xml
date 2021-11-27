@@ -34,6 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
+        android:backgroundTint="@color/black"
         android:text="Edit"
         app:layout_constraintEnd_toStartOf="@+id/removeButton"
         app:layout_constraintTop_toBottomOf="@+id/quantityTextView" />
@@ -43,6 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
+        android:backgroundTint="@color/black"
         android:text="Remove"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/editButton" />
@@ -95,6 +97,7 @@
         android:layout_width="48dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
+        android:backgroundTint="@color/black"
         android:text="+"
         app:layout_constraintBottom_toBottomOf="@+id/quantityNumberTextView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -105,6 +108,7 @@
         android:layout_width="48dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
+        android:backgroundTint="@color/black"
         android:text="-"
         app:layout_constraintBottom_toBottomOf="@+id/quantityTextView"
         app:layout_constraintStart_toEndOf="@+id/quantityTextView"

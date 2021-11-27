@@ -9,10 +9,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.text.NumberFormat;
+
+import ca.qc.johnabbott.finalproject.Model.CartItem;
 import ca.qc.johnabbott.finalproject.Model.CartItemSampleData;
+import ca.qc.johnabbott.finalproject.databinding.FragmentCartItemListBinding;
 import ca.qc.johnabbott.finalproject.placeholder.PlaceholderContent;
 
 /**
@@ -54,19 +59,29 @@ public class CartItemListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_cart_item_list, container, false);
+
+        FragmentCartItemListBinding binding = FragmentCartItemListBinding.inflate(inflater, container, false);
 
         // Set the adapter
-        if (view instanceof RecyclerView) {
-            Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
-            if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-            }
-            recyclerView.setAdapter(new CartItemRecyclerViewAdapter(CartItemSampleData.getData()));
+        Context context = getContext();
+        if (mColumnCount <= 1) {
+            binding.cartRecyclerView.setLayoutManager(new LinearLayoutManager(context));
+        } else {
+            binding.cartRecyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
         }
-        return view;
+        binding.cartRecyclerView.setAdapter(new CartItemRecyclerViewAdapter(CartItemSampleData.getData()));
+
+        double subtotal = CartItemSampleData.getData().stream().mapToDouble(ci -> ci.getQuantity() * ci.getUnitPrice()).sum();
+        //todo maybe do this in the object
+
+        double taxes = subtotal * 0.15; //todo do w constant
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+
+        binding.subtotalNumber.setText(formatter.format(subtotal));
+        binding.taxesNumber.setText(formatter.format(taxes));
+        binding.totalNumber.setText(formatter.format(subtotal + taxes));
+
+
+        return binding.getRoot();
     }
 }

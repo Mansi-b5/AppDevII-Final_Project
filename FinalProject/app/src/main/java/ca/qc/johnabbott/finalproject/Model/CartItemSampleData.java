@@ -25,6 +25,16 @@ public class CartItemSampleData {
 
         data.add(new CartItem()
                 .setProduct(new Product()
+                        .setName("Cheese pizza")
+                        .setDescription("maim cheesy pizza")
+                        .setPrice(9.99)
+                        .setImageResourceId(R.drawable.cart_placeholder_image)
+                )
+                .setQuantity(2)
+                .setUnitPrice(2.99));
+
+        data.add(new CartItem()
+                .setProduct(new Product()
                         .setName("Coke")
                         .setDescription("slurp good coke")
                         .setPrice(2.99)
