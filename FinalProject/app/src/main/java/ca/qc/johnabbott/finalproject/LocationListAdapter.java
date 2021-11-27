@@ -71,6 +71,15 @@ public class LocationListAdapter extends RecyclerView.Adapter<LocationListAdapte
                 }
             });
 
+            binding.phone.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(Intent.ACTION_DIAL);
+                    intent.setData(Uri.parse("tel:" + location.getPhoneNumber()));
+                    context.startActivity(intent);
+                }
+            });
+
         }
 
 
