@@ -31,7 +31,7 @@ public class CartItemSampleData {
                         .setImageResourceId(R.drawable.cart_placeholder_image)
                 )
                 .setQuantity(2)
-                .setUnitPrice(2.99));
+                .setUnitPrice(9.99));
 
         data.add(new CartItem()
                 .setProduct(new Product()

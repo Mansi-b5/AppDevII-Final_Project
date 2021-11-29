@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import ca.qc.johnabbott.finalproject.Model.CartItem;
+import ca.qc.johnabbott.finalproject.UI.MainActivity;
 import ca.qc.johnabbott.finalproject.databinding.ListItemCartItemBinding;
 
 import java.text.NumberFormat;
@@ -19,9 +20,11 @@ import java.util.List;
 public class CartItemRecyclerViewAdapter extends RecyclerView.Adapter<CartItemRecyclerViewAdapter.ViewHolder> {
 
     private final List<CartItem> mValues;
+    private final CartItemListFragment cartItemListFragment;
 
-    public CartItemRecyclerViewAdapter(List<CartItem> items) {
+    public CartItemRecyclerViewAdapter(List<CartItem> items, CartItemListFragment cartItemListFragment) {
         mValues = items;
+        this.cartItemListFragment = cartItemListFragment;
     }
 
     @NonNull
@@ -68,18 +71,26 @@ public class CartItemRecyclerViewAdapter extends RecyclerView.Adapter<CartItemRe
                 }
                 mItem.setQuantity(--old);
                 notifyItemChanged(position);
+                notifyViewModel();
             });
 
             binding.quantityPlusButton.setOnClickListener(view -> {
                 int old = mItem.getQuantity();
                 mItem.setQuantity(++old);
                 notifyItemChanged(position);
+                notifyViewModel();
             });
 
             binding.removeButton.setOnClickListener(view -> {
                 mValues.remove(position);
                 notifyItemRemoved(position);
+                notifyViewModel();
             });
+        }
+
+        private void notifyViewModel() {
+            MainActivity mainActivity = (MainActivity) cartItemListFragment.getActivity();
+            mainActivity.getOrderViewModel().notifyChange();
         }
     }
 }
