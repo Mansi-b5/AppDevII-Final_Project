@@ -1,87 +1,63 @@
 package ca.qc.johnabbott.finalproject.UI;
 
 import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.HashMap;
 import java.util.List;
-
 import ca.qc.johnabbott.finalproject.Model.Menu;
+import ca.qc.johnabbott.finalproject.R;
 
-//public class ExpandableListAdapter extends BaseExpandableListAdapter {
-   /* private Context context;
-    private List<String> expandableListTitle;
-    private List<Menu> data;
+public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
-    public CustomExpandableListAdapter(Context context, List<String> expandableListTitle,
-                                           List<Menu> data) {
-        this.context = context;
-        this.expandableListTitle = expandableListTitle;
-        this.data = data;
-    }
+    private Context context;
+    private HashMap<String, List<Menu>> items;
+    private List<String> listHeader;
 
-    @Override
-    public Object getChild(int listPosition, int expandedListPosition) {
-        return this.data.get(this.expandableListTitle.get(listPosition))
-                .get(expandedListPosition);
-    }
-
-    @Override
-    public long getChildId(int listPosition, int expandedListPosition) {
-        return expandedListPosition;
-    }
-
-    @Override
-    public View getChildView(int listPosition, final int expandedListPosition,
-                             boolean isLastChild, View convertView, ViewGroup parent) {
-        final String expandedListText = (String) getChild(listPosition, expandedListPosition);
-        if (convertView == null) {
-            LayoutInflater layoutInflater = (LayoutInflater) this.context
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = layoutInflater.inflate(R.layout.list_item, null);
-        }
-        TextView expandedListTextView = (TextView) convertView
-                .findViewById(R.id.expandedListItem);
-        expandedListTextView.setText(expandedListText);
-        return convertView;
-    }
-
-    @Override
-    public int getChildrenCount(int listPosition) {
-        return this.expandableListDetail.get(this.expandableListTitle.get(listPosition))
-                .size();
-    }
-
-    @Override
-    public Object getGroup(int listPosition) {
-        return this.expandableListTitle.get(listPosition);
+    public ExpandableListAdapter(List<String> listHeader,HashMap<String,List<Menu>> items)
+    {
+        this.items = items;
+        this.listHeader = listHeader;
     }
 
     @Override
     public int getGroupCount() {
-        return this.expandableListTitle.size();
+        return this.listHeader.size();
     }
 
     @Override
-    public long getGroupId(int listPosition) {
-        return listPosition;
+    public int getChildrenCount(int i) {
+        return this.items.get(this.listHeader.get(i)).size();
     }
 
     @Override
-    public View getGroupView(int listPosition, boolean isExpanded,
-                             View convertView, ViewGroup parent) {
-        String listTitle = (String) getGroup(listPosition);
-        if (convertView == null) {
-            LayoutInflater layoutInflater = (LayoutInflater) this.context.
-                    getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = layoutInflater.inflate(R.layout.list_group, null);
-        }
-        TextView listTitleTextView = (TextView) convertView
-                .findViewById(R.id.listTitle);
-        listTitleTextView.setTypeface(null, Typeface.BOLD);
-        listTitleTextView.setText(listTitle);
-        return convertView;
+    public Object getGroup(int i) {
+        return listHeader.get(i);
+    }
+
+    @Override
+    public Object getChild(int groupPos, int itemPos) {
+        return items.get(listHeader.get(groupPos)).get(itemPos);
+    }
+
+    @Override
+    public long getGroupId(int groupPos) {
+        return groupPos;
+    }
+
+    @Override
+    public long getChildId(int groupPos, int itemPos) {
+        return itemPos;
     }
 
     @Override
@@ -89,11 +65,56 @@ import ca.qc.johnabbott.finalproject.Model.Menu;
         return false;
     }
 
+    @Override
+    public View getGroupView(int groupPos, boolean isExpanded, View view, ViewGroup viewGroup) {
+        if(view == null)
+        {
+            view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.fragment_menu_group,viewGroup,false);
+        }
 
+        TextView textView = view.findViewById(R.id.expandedListGroup);
+        LinearLayout linearLayout = view.findViewById(R.id.cardViewColor);
+        ImageView imageView = view.findViewById(R.id.image);
+
+        if(listHeader.get(groupPos) == "Pizza")
+        {
+            textView.setText(String.valueOf(getGroup(groupPos)));
+            linearLayout.setBackgroundResource(R.drawable.gradient1);
+            imageView.setBackgroundResource(R.drawable.ic_baseline_local_pizza_24);
+        }
+        else if(listHeader.get(groupPos) == "Sides")
+        {
+            textView.setText(String.valueOf(getGroup(groupPos)));
+            linearLayout.setBackgroundResource(R.drawable.gradient2);
+            imageView.setBackgroundResource(R.drawable.ic_baseline_fastfood_24);
+        }
+        else if(listHeader.get(groupPos) == "Drinks"){
+            textView.setText(String.valueOf(getGroup(groupPos)));
+            linearLayout.setBackgroundResource(R.drawable.gradient3);
+            imageView.setBackgroundResource(R.drawable.ic_baseline_local_drink_24);
+        }
+
+        return view;
+    }
 
     @Override
-    public boolean isChildSelectable(int listPosition, int expandedListPosition) {
-        return true;
-    }*/
-//}
+    public View getChildView(int groupPos, int itemPos, boolean isLast, View view, ViewGroup viewGroup) {
+        if(view == null)
+        {
+            view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.fragment_menu_item,viewGroup,false);
+        }
 
+
+        Object item = items.get(listHeader.get(groupPos)).get(itemPos).getTitle();
+
+        TextView textView = view.findViewById(R.id.textItem);
+        textView.setText(String.valueOf(item));
+        return view;
+    }
+
+    @Override
+    public boolean isChildSelectable(int i, int i1) {
+        return false;
+    }
+
+}
