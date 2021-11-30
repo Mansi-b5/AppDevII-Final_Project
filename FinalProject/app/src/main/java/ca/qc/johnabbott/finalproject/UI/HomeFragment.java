@@ -48,8 +48,7 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         int[] sampleImages = {R.drawable.pizza,R.drawable.pizza,R.drawable.pizza};
-        binding.firstDealCardview.setVisibility(View.GONE);
-        binding.textView2.setVisibility(View.GONE);
+
 
         binding.carouselView.setImageListener(new ImageListener() {
             @Override
@@ -67,10 +66,11 @@ public class HomeFragment extends Fragment {
                    case 0:
                        popupDealsFragment.set_combo("2 large pizzas and 2 drinks of your choice");
                        popupDealsFragment.set_price("$25.99");
+
                        break;
                    case 1:
-                       popupDealsFragment.set_combo("1 Large pizza for the price of a small pizza ");
-                       popupDealsFragment.set_price("$10.99");
+                       popupDealsFragment.set_combo("Buy 1 large, get small free");
+                       popupDealsFragment.set_price("$17.99");
                        break;
                    case 2:
                        popupDealsFragment.set_combo("1 Large pizza, chicken wings and a drink of your choice");

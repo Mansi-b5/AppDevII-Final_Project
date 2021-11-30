@@ -27,22 +27,7 @@
         app:radius="6dp"
         app:slideInterval="3000"
         app:strokeColor="#FF777777"
-        app:strokeWidth="1dp" >
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/firstDeal_cardview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:backgroundTint="@color/black">
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="146dp"
-                android:layout_height="58dp"
-                android:foregroundTint="@color/white"
-                android:text="Deals" />
-        </androidx.cardview.widget.CardView>
-    </com.synnapps.carouselview.CarouselView>
+        app:strokeWidth="1dp" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -53,46 +38,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/category_textView">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/pizza_cardview"
-            android:layout_width="99dp"
-            android:layout_height="82dp"
-            android:layout_marginStart="10dp"
-            app:cardBackgroundColor="#EEFFFFFF">
+        <ImageView
+            android:id="@+id/pizza_imageview"
+            android:layout_width="wrap_content"
+            android:layout_height="98dp"
+            android:layout_marginStart="15dp"
+            android:layout_weight="1"
+            android:src="@drawable/pizzacat" />
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_baseline_local_pizza_24" />
-        </androidx.cardview.widget.CardView>
+        <ImageView
+            android:id="@+id/sides_imageview"
+            android:layout_width="250dp"
+            android:layout_height="96dp"
+            android:layout_marginStart="15dp"
+            android:layout_weight="1"
+            android:src="@drawable/dessert" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/drinks_cardview"
-            android:layout_width="108dp"
-            android:layout_height="82dp"
-            android:layout_marginStart="30dp">
-
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_baseline_local_pizza_24" />
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/sides_cardview"
-            android:layout_width="105dp"
-            android:layout_height="82dp"
-            android:layout_marginStart="30dp">
-
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_baseline_local_pizza_24" />
-        </androidx.cardview.widget.CardView>
-
+        <ImageView
+            android:id="@+id/drinks_imageview"
+            android:layout_width="wrap_content"
+            android:layout_height="98dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_weight="1"
+            android:src="@drawable/drink" />
     </LinearLayout>
 
     <TextView
@@ -106,7 +75,7 @@
         app:layout_constraintTop_toBottomOf="@+id/carouselView" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/pizza_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -117,22 +86,23 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/fries_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Fries"
+        android:layout_marginTop="12dp"
+        android:text="Sides"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/textView7"
-        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintEnd_toStartOf="@+id/drinks_textView"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toEndOf="@+id/pizza_textView"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/drinks_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="45dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="32dp"
         android:text="Drinks"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
