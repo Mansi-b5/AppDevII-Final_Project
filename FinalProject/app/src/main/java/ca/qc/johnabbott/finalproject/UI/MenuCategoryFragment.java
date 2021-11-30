@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import ca.qc.johnabbott.finalproject.Model.MenuData;
 import ca.qc.johnabbott.finalproject.R;
 
 
@@ -40,7 +39,7 @@ public class MenuCategoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_menu_category, container, false);
+        return inflater.inflate(R.layout.fragment_menu, container, false);
     }
 
     @Override
