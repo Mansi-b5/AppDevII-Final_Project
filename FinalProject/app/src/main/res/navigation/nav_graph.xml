@@ -30,7 +30,7 @@
         android:id="@+id/menuFragment"
         android:name="ca.qc.johnabbott.finalproject.UI.MenuFragment"
         android:label="fragment_menu_list"
-        tools:layout="@layout/fragment_menu_list">
+        tools:layout="@layout/fragment_menu_item">
         <action
             android:id="@+id/action_menuFragment_to_thirdFragment"
             app:destination="@id/thirdFragment" />
