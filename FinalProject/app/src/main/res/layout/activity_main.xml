@@ -15,7 +15,6 @@
         android:title="@string/pizzabros"
         />
 
-
     <FrameLayout
         android:id="@+id/fl_wrapper"
         android:layout_width="match_parent"

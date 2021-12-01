@@ -70,7 +70,12 @@ public class MainActivity extends AppCompatActivity {
                         fragment = new HomeFragment();;
                         break;
 
+                    case R.id.ic_menu:
+                        fragment = new MenuCategoryFragment();;
+                        break;
+
                     case R.id.ic_contact:
+
                         fragment = new ContactFragment();;
                         break;
 
