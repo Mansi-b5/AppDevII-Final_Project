@@ -17,8 +17,12 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import ca.qc.johnabbott.finalproject.CartItemListFragment;
+import ca.qc.johnabbott.finalproject.Model.CartItemSampleData;
+import ca.qc.johnabbott.finalproject.Model.Order;
 import ca.qc.johnabbott.finalproject.R;
 import ca.qc.johnabbott.finalproject.databinding.ActivityMainBinding;
+import ca.qc.johnabbott.finalproject.viewmodel.OrderViewModel;
 
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,6 +33,15 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private NavigationBarView bottomNavigationView;
 
+    private OrderViewModel orderViewModel;
+
+    public MainActivity() {
+        orderViewModel = new OrderViewModel();
+    }
+
+    public OrderViewModel getOrderViewModel() {
+        return orderViewModel;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.ic_cart:
-                        fragment = new CartFragment();;
+                        fragment = new CartItemListFragment();;
                         break;
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.fl_wrapper,fragment).commit();
@@ -74,8 +87,9 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.fl_wrapper,new HomeFragment()).commit();
 
 
-
-
+        Order testOrder = new Order();
+        testOrder.setCartItemList(CartItemSampleData.getData());
+        orderViewModel.setOrder(testOrder);
     }
 
 
