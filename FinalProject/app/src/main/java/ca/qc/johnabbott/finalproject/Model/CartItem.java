@@ -8,7 +8,7 @@ public class CartItem {
     private static int CURRENT_LOCAL_ID = 0;
 
     private int id;
-    private Product product;
+    private MenuItem product;
     private int Quantity;
     private double UnitPrice;
 
@@ -16,7 +16,7 @@ public class CartItem {
         id = CURRENT_LOCAL_ID++;
     }
 
-    public CartItem(int id, Product product, int quantity, double unitPrice) {
+    public CartItem(int id, MenuItem product, int quantity, double unitPrice) {
         this.id = id;
         this.product = product;
         Quantity = quantity;
@@ -32,11 +32,11 @@ public class CartItem {
         return this;
     }
 
-    public Product getProduct() {
+    public MenuItem getProduct() {
         return product;
     }
 
-    public CartItem setProduct(Product product) {
+    public CartItem setProduct(MenuItem product) {
         this.product = product;
         return this;
     }

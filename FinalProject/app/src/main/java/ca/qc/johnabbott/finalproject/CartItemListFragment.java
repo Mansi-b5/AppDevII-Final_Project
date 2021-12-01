@@ -82,16 +82,6 @@ public class CartItemListFragment extends Fragment {
 
         populateTotalPriceTable();
 
-//        double subtotal = CartItemSampleData.getData().stream().mapToDouble(ci -> ci.getQuantity() * ci.getUnitPrice()).sum();
-//        //todo maybe do this in the object
-//
-//        double taxes = subtotal * 0.15; //todo do w constant
-//        NumberFormat formatter = NumberFormat.getCurrencyInstance();
-//
-//        binding.subtotalNumber.setText(formatter.format(subtotal));
-//        binding.taxesNumber.setText(formatter.format(taxes));
-//        binding.totalNumber.setText(formatter.format(subtotal + taxes));
-
 
         return binding.getRoot();
     }

@@ -9,21 +9,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 
-import ca.qc.johnabbott.finalproject.Model.Menu;
+import ca.qc.johnabbott.finalproject.Model.MenuItem;
 import ca.qc.johnabbott.finalproject.Model.MenuData;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import ca.qc.johnabbott.finalproject.Model.MenuData;
 import ca.qc.johnabbott.finalproject.R;
 
 
 public class MenuCategoryFragment extends Fragment {
 
     List<String> listHeader;
-    HashMap<String,List<Menu>> items;
+    HashMap<String,List<MenuItem>> items;
     ExpandableListView expandableListView;
 
     public MenuCategoryFragment() {

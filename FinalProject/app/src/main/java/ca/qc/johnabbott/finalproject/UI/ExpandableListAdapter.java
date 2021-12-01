@@ -1,7 +1,6 @@
 package ca.qc.johnabbott.finalproject.UI;
 
 import android.content.Context;
-import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,21 +9,18 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.HashMap;
 import java.util.List;
-import ca.qc.johnabbott.finalproject.Model.Menu;
+import ca.qc.johnabbott.finalproject.Model.MenuItem;
 import ca.qc.johnabbott.finalproject.R;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     private Context context;
-    private HashMap<String, List<Menu>> items;
+    private HashMap<String, List<MenuItem>> items;
     private List<String> listHeader;
 
-    public ExpandableListAdapter(List<String> listHeader,HashMap<String,List<Menu>> items)
+    public ExpandableListAdapter(List<String> listHeader,HashMap<String,List<MenuItem>> items)
     {
         this.items = items;
         this.listHeader = listHeader;

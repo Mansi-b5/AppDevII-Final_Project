@@ -67,20 +67,20 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId())
                 {
                     case R.id.ic_home:
-                        fragment = new HomeFragment();;
+                        fragment = new HomeFragment();
                         break;
 
                     case R.id.ic_menu:
-                        fragment = new MenuCategoryFragment();;
+                        fragment = new MenuCategoryFragment();
                         break;
 
                     case R.id.ic_contact:
 
-                        fragment = new ContactFragment();;
+                        fragment = new ContactFragment();
                         break;
 
                     case R.id.ic_cart:
-                        fragment = new CartItemListFragment();;
+                        fragment = new CartItemListFragment();
                         break;
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.fl_wrapper,fragment).commit();
