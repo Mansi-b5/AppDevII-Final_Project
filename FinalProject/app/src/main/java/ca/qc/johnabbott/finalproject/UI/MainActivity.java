@@ -18,6 +18,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import ca.qc.johnabbott.finalproject.CartItemListFragment;
+import ca.qc.johnabbott.finalproject.Model.CartItem;
 import ca.qc.johnabbott.finalproject.Model.CartItemSampleData;
 import ca.qc.johnabbott.finalproject.Model.Order;
 import ca.qc.johnabbott.finalproject.R;
@@ -26,6 +27,9 @@ import ca.qc.johnabbott.finalproject.viewmodel.OrderViewModel;
 
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -93,7 +97,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         Order testOrder = new Order();
-        testOrder.setCartItemList(CartItemSampleData.getData());
+//        testOrder.setCartItemList(CartItemSampleData.getData());
+        List<CartItem> emptyList = new ArrayList<>();
+        testOrder.setCartItemList(emptyList);
         orderViewModel.setOrder(testOrder);
     }
 

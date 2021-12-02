@@ -31,7 +31,7 @@
         app:itemBackground="@color/black"
         app:itemIconTint="#fff"
         app:itemTextColor="#fff"
-        app:menu="@menu/nav_menu"/>
+        app:menu="@menu/nav_menu" />
 
 
 </RelativeLayout>

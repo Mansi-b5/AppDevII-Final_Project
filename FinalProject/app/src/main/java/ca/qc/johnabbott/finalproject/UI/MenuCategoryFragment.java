@@ -50,7 +50,7 @@ public class MenuCategoryFragment extends Fragment {
         expandableListView = view.findViewById(R.id.expandableListView);
         items = MenuData.getData();
         listHeader = new ArrayList<String>(items.keySet());
-        expandableListView.setAdapter(new ExpandableListAdapter(listHeader,items));
+        expandableListView.setAdapter(new ExpandableListAdapter(listHeader, items, this));
         expandableListView.setGroupIndicator(null);
 
 
