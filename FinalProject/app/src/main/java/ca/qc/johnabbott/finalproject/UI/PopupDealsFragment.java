@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import com.synnapps.carouselview.ImageClickListener;
@@ -16,7 +17,7 @@ import ca.qc.johnabbott.finalproject.R;
 import ca.qc.johnabbott.finalproject.databinding.FragmentHomeBinding;
 import ca.qc.johnabbott.finalproject.databinding.FragmentPopupdealswindowBinding;
 
-public class PopupDealsFragment extends Fragment {
+public class PopupDealsFragment extends DialogFragment {
 
     private String _combo;
     private String _price;

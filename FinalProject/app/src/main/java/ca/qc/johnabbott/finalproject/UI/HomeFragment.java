@@ -78,6 +78,7 @@ public class HomeFragment extends Fragment {
                        break;
 
                }
+               popupDealsFragment.show(getFragmentManager(), "test");
 
            }
        });
