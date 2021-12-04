@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 
-import ca.qc.johnabbott.finalproject.Model.Menu;
+import ca.qc.johnabbott.finalproject.Model.MenuItem;
 import ca.qc.johnabbott.finalproject.Model.MenuData;
 
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ import ca.qc.johnabbott.finalproject.R;
 public class MenuCategoryFragment extends Fragment {
 
     List<String> listHeader;
-    HashMap<String,List<Menu>> items;
+    HashMap<String,List<MenuItem>> items;
     ExpandableListView expandableListView;
 
     public MenuCategoryFragment() {
@@ -50,7 +50,7 @@ public class MenuCategoryFragment extends Fragment {
         expandableListView = view.findViewById(R.id.expandableListView);
         items = MenuData.getData();
         listHeader = new ArrayList<String>(items.keySet());
-        expandableListView.setAdapter(new ExpandableListAdapter(listHeader,items));
+        expandableListView.setAdapter(new ExpandableListAdapter(listHeader, items, this));
         expandableListView.setGroupIndicator(null);
 
 

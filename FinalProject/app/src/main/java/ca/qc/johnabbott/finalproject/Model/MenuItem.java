@@ -1,6 +1,6 @@
 package ca.qc.johnabbott.finalproject.Model;
 
-public class Menu {
+public class MenuItem {
 
     private int id;
     private String category;
@@ -9,10 +9,14 @@ public class Menu {
     private double price;
     private Size size;
 
-    public Menu()
+
+
+    private int imageResourceId;
+
+    public MenuItem()
     {
     }
-    public Menu(int id)
+    public MenuItem(int id)
     {
         this.id = id;
     }
@@ -21,7 +25,7 @@ public class Menu {
         return id;
     }
 
-    public Menu setId(int id) {
+    public MenuItem setId(int id) {
         this.id = id;
         return this;
     }
@@ -30,7 +34,7 @@ public class Menu {
         return description;
     }
 
-    public Menu setDescription(String description) {
+    public MenuItem setDescription(String description) {
 
         this.description = description;
         return this;
@@ -40,7 +44,7 @@ public class Menu {
         return category;
     }
 
-    public Menu setCategory(String category) {
+    public MenuItem setCategory(String category) {
 
         this.category = category;
         return this;
@@ -50,7 +54,7 @@ public class Menu {
         return title;
     }
 
-    public Menu setTitle(String title) {
+    public MenuItem setTitle(String title) {
 
         this.title = title;
         return this;
@@ -60,7 +64,7 @@ public class Menu {
         return price;
     }
 
-    public Menu setPrice(double price)
+    public MenuItem setPrice(double price)
     {
         this.price = price;
         return this;
@@ -70,8 +74,17 @@ public class Menu {
         return size;
     }
 
-    public Menu setSize(Size size) {
+    public MenuItem setSize(Size size) {
         this.size = size;
+        return this;
+    }
+
+    public int getImageResourceId() {
+        return imageResourceId;
+    }
+
+    public MenuItem setImageResourceId(int imageResourceId) {
+        this.imageResourceId = imageResourceId;
         return this;
     }
 }
