@@ -41,7 +41,7 @@ public class MenuItems extends Fragment {
         text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                String snackBarText = " ";
             }
         });
         return view;

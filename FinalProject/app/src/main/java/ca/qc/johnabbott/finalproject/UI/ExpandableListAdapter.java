@@ -1,6 +1,7 @@
 package ca.qc.johnabbott.finalproject.UI;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,8 +10,11 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -116,6 +120,14 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
         TextView textView = view.findViewById(R.id.textItem);
         textView.setText(title);
+
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+              //  NavController controller = Navigation.findNavController(getActivity, R.id.nav_host_fragment_content_main);
+                //controller.navigate(R.id.);
+            }
+        });
 
         ImageButton addToCart = view.findViewById(R.id.addToCartImageButton);
         addToCart.setOnClickListener(view1 -> {
