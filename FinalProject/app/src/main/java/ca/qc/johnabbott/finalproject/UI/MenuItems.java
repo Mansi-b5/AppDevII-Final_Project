@@ -14,14 +14,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import ca.qc.johnabbott.finalproject.Model.Menu;
+import ca.qc.johnabbott.finalproject.Model.MenuItem;
 import ca.qc.johnabbott.finalproject.Model.MenuData;
 import ca.qc.johnabbott.finalproject.R;
 
-public class MenuItem extends Fragment {
+public class MenuItems extends Fragment {
 
 
-    public MenuItem() {
+    public MenuItems() {
         // Required empty public constructor
     }
 
