@@ -27,12 +27,6 @@ import ca.qc.johnabbott.finalproject.databinding.FragmentHomeBinding;
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
-    private AlertDialog.Builder dialogBuilder;
-    private AlertDialog dialog;
-    private TextView combo, price;
-    private Button close;
-
-
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -47,7 +41,7 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        int[] sampleImages = {R.drawable.pizza,R.drawable.pizza,R.drawable.pizza};
+        int[] sampleImages = {R.drawable.firstcombo,R.drawable.secondcombo,R.drawable.thirdcombo};
 
 
         binding.carouselView.setImageListener(new ImageListener() {
@@ -64,34 +58,29 @@ public class HomeFragment extends Fragment {
                switch (position)
                {
                    case 0:
-                       popupDealsFragment.set_combo("2 large pizzas and 2 drinks of your choice");
+                       popupDealsFragment.set_combo("2 large pizzas+2 drinks+fries");
                        popupDealsFragment.set_price("$25.99");
+                       popupDealsFragment.set_image(R.drawable.firstcombo);
 
                        break;
                    case 1:
-                       popupDealsFragment.set_combo("Buy 1 large, get small free");
+                       popupDealsFragment.set_combo("Buy 1 large pizza, get small free");
                        popupDealsFragment.set_price("$17.99");
+                       popupDealsFragment.set_image(R.drawable.secondcombo);
                        break;
                    case 2:
-                       popupDealsFragment.set_combo("1 Large pizza, chicken wings and a drink of your choice");
+                       popupDealsFragment.set_combo("1 Large pizza+6 chicken wings+ 1 drink");
                        popupDealsFragment.set_price("$20.99");
+                       popupDealsFragment.set_image(R.drawable.thirdcombo);
                        break;
 
                }
-               popupDealsFragment.show(getFragmentManager(), "test");
+               popupDealsFragment.show(getFragmentManager(), "deals");
 
            }
        });
         binding.carouselView.setPageCount(sampleImages.length);
 
-
-    }
-
-    public void popUpDealsOnClick()
-    {
-
-        dialogBuilder = new AlertDialog.Builder(getContext());
-        View popUpWindow = getLayoutInflater().inflate(R.layout.fragment_popupdealswindow,null);
 
     }
 
