@@ -19,6 +19,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.Map;
 
 import ca.qc.johnabbott.finalproject.LocationListAdapter;
+import ca.qc.johnabbott.finalproject.Model.Location;
 import ca.qc.johnabbott.finalproject.Model.LocationData;
 import ca.qc.johnabbott.finalproject.R;
 import ca.qc.johnabbott.finalproject.databinding.FragmentContactBinding;
@@ -100,7 +101,10 @@ public class ContactFragment extends Fragment implements OnMapReadyCallback {
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
-        googleMap.addMarker(new MarkerOptions().position(new LatLng(45.40658109095025, -73.94171747323092)).title("Marker"));
+        for (Location location: LocationData.getData()) {
+            googleMap.addMarker(new MarkerOptions().position(new LatLng(location.getLatitude(), location.getLongitude())).title(location.getAddress()));
+        }
+
     }
 
     @Override
