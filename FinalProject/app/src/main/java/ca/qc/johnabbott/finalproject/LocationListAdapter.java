@@ -60,7 +60,7 @@ public class LocationListAdapter extends RecyclerView.Adapter<LocationListAdapte
             binding.hours.setText(location.getHours());
             binding.phone.setText(location.getPhoneNumber());
 
-            binding.locationImage.setOnClickListener(new View.OnClickListener() {
+            /*binding.locationImage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     String uri = "https://goo.gl/maps/P9CxKRDoxcwVZ4rWA";
@@ -69,7 +69,7 @@ public class LocationListAdapter extends RecyclerView.Adapter<LocationListAdapte
 
                     context.startActivity(intent);
                 }
-            });
+            });*/
 
             binding.phone.setOnClickListener(new View.OnClickListener() {
                 @Override
