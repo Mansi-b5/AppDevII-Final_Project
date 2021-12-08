@@ -81,6 +81,16 @@ public class HomeFragment extends Fragment {
        });
         binding.carouselView.setPageCount(sampleImages.length);
 
+        binding.pizzaImageview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment fragment = new MenuCategoryFragment();
+
+
+
+            }
+        });
+
 
     }
 
