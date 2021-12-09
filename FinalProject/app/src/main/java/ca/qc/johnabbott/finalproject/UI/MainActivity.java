@@ -28,6 +28,7 @@ import ca.qc.johnabbott.finalproject.viewmodel.OrderViewModel;
 import android.view.Menu;
 import android.view.MenuItem;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,18 +53,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
-
         setContentView(binding.getRoot());
-
-        //setSupportActionBar(binding.toolbar);
-
-//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-//        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-//        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+        setSupportActionBar(binding.toolbar);
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+
+
+        binding.bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
@@ -102,7 +102,6 @@ public class MainActivity extends AppCompatActivity {
         testOrder.setCartItemList(emptyList);
         orderViewModel.setOrder(testOrder);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

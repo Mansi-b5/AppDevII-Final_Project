@@ -6,14 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".UI.MainActivity">
 
-    <android.widget.Toolbar
+
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="@color/design_default_color_primary"
-        android:id="@+id/main_toolbar"
-        android:logo="@drawable/ic_baseline_local_pizza_24"
-        android:title="@string/pizzabros"
-        />
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.FinalProject.AppBarOverlay">
+
+        <android.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@color/design_default_color_primary"
+            android:id="@+id/toolbar"
+            android:logo="@drawable/ic_baseline_local_pizza_24"
+            android:title="@string/pizzabros" />
+    </com.google.android.material.appbar.AppBarLayout>
+
 
     <FrameLayout
         android:id="@+id/fl_wrapper"
