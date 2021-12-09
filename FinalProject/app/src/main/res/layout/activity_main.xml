@@ -7,27 +7,23 @@
     tools:context=".UI.MainActivity">
 
 
-    <com.google.android.material.appbar.AppBarLayout
+    <android.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/Theme.FinalProject.AppBarOverlay">
-
-        <android.widget.Toolbar
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:background="@color/design_default_color_primary"
-            android:id="@+id/toolbar"
-            android:logo="@drawable/ic_baseline_local_pizza_24"
-            android:title="@string/pizzabros" />
-    </com.google.android.material.appbar.AppBarLayout>
+        android:layout_height="56dp"
+        android:background="@color/design_default_color_primary"
+        android:logo="@drawable/ic_baseline_local_pizza_24"
+        android:title="@string/pizzabros" />
 
 
-    <FrameLayout
-        android:id="@+id/fl_wrapper"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment_content_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="56dp"
-        android:layout_above="@id/bottom_navigation" />
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph"
+        android:layout_above="@id/bottom_navigation"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -38,7 +34,11 @@
         app:itemBackground="@color/black"
         app:itemIconTint="#fff"
         app:itemTextColor="#fff"
-        app:menu="@menu/nav_menu" />
+        app:menu="@menu/nav_menu" >
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+
 
 
 </RelativeLayout>
