@@ -2,10 +2,12 @@ package ca.qc.johnabbott.finalproject.Model;
 
 import java.util.UUID;
 
-public class Location {
+import ca.qc.johnabbott.finalproject.sqlite.Identifiable;
+
+public class Location implements Identifiable<Long> {
     private static int CURRENT_LOCAL_ID = 0;
 
-    private int id;
+    private long id;
     private UUID uuid;
 
     private String name;
@@ -54,9 +56,16 @@ public class Location {
         this.longitude = null;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
+
+    @Override
+    public Identifiable<Long> setId(Long id) {
+        this.id = id;
+        return this;
+    }
+
     public Location setId(int id) {
         this.id = id;
         return this;
