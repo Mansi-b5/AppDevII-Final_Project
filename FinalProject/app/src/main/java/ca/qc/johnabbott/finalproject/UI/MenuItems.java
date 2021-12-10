@@ -1,31 +1,27 @@
 package ca.qc.johnabbott.finalproject.UI;
 
+
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
 
-import ca.qc.johnabbott.finalproject.Model.MenuItem;
-import ca.qc.johnabbott.finalproject.Model.MenuData;
+import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import ca.qc.johnabbott.finalproject.Model.MenuItem;
+import ca.qc.johnabbott.finalproject.Model.MenuData;
 import ca.qc.johnabbott.finalproject.R;
 
+public class MenuItems extends Fragment {
 
-public class MenuCategoryFragment extends Fragment {
 
-    List<String> listHeader;
-    HashMap<String,List<MenuItem>> items;
-    ExpandableListView expandableListView;
-
-    public MenuCategoryFragment() {
+    public MenuItems() {
         // Required empty public constructor
     }
 
@@ -39,7 +35,16 @@ public class MenuCategoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_menu, container, false);
+        View view = inflater.inflate(R.layout.fragment_menu_item, container, false);
+
+        TextView text = (TextView) view.findViewById(R.id.textItem);
+        text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String snackBarText = " ";
+            }
+        });
+        return view;
     }
 
     @Override
@@ -47,11 +52,6 @@ public class MenuCategoryFragment extends Fragment {
     {
         super.onViewCreated(view,savedInstanceState);
 
-        expandableListView = view.findViewById(R.id.expandableListView);
-        items = MenuData.getData();
-        listHeader = new ArrayList<String>(items.keySet());
-        expandableListView.setAdapter(new ExpandableListAdapter(listHeader, items, this));
-        expandableListView.setGroupIndicator(null);
 
 
     }
