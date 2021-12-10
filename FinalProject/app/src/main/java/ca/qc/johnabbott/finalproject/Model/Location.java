@@ -12,6 +12,26 @@ public class Location {
     private String hours;
     private String phoneNumber;
     private String map;
+    private Double latitude;
+    private Double longitude;
+
+
+    public Double getLatitude() {
+        return latitude;
+    }
+    public Location setLatitude(Double latitude) {
+        this.latitude = latitude;
+        return this;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+    public Location setLongitude(Double longitude) {
+        this.longitude = longitude;
+        return this;
+    }
+
 
     public Location() { this(++CURRENT_LOCAL_ID, UUID.randomUUID()); }
 
@@ -22,6 +42,8 @@ public class Location {
         this.hours = null;
         this.phoneNumber = null;
         this.map = null;
+        this.latitude = null;
+        this.longitude = null;
     }
 
     public int getId() {
