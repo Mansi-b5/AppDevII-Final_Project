@@ -83,7 +83,7 @@ public class CartItemRecyclerViewAdapter extends RecyclerView.Adapter<CartItemRe
 
             binding.removeButton.setOnClickListener(view -> {
                 mValues.remove(position);
-                notifyItemRemoved(position);
+                notifyDataSetChanged();
                 notifyViewModel();
             });
         }

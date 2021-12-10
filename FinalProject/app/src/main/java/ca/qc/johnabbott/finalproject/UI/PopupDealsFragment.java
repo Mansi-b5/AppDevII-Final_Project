@@ -4,22 +4,18 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-
-import com.synnapps.carouselview.ImageClickListener;
-import com.synnapps.carouselview.ImageListener;
+import androidx.fragment.app.DialogFragment;
 
 import ca.qc.johnabbott.finalproject.R;
-import ca.qc.johnabbott.finalproject.databinding.FragmentHomeBinding;
 import ca.qc.johnabbott.finalproject.databinding.FragmentPopupdealswindowBinding;
 
-public class PopupDealsFragment extends Fragment {
+public class PopupDealsFragment extends DialogFragment {
 
     private String _combo;
     private String _price;
+    private int _image;
     private FragmentPopupdealswindowBinding binding;
 
 
@@ -40,6 +36,15 @@ public class PopupDealsFragment extends Fragment {
         this._price = _price;
     }
 
+    public void set_image (int _image)
+    {
+        this._image = _image;
+    }
+    public int get_image()
+    {
+        return this._image;
+    }
+
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -54,6 +59,7 @@ public class PopupDealsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         binding.comboNameTextview.setText(get_combo());
         binding.priceOfComboTextview.setText(get_price());
+        binding.dealsImageView.setImageResource(get_image());
     }
 
 

@@ -5,12 +5,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.HashMap;
 import java.util.List;
+
+import ca.qc.johnabbott.finalproject.CartItemListFragment;
+import ca.qc.johnabbott.finalproject.Model.CartItem;
 import ca.qc.johnabbott.finalproject.Model.MenuItem;
 import ca.qc.johnabbott.finalproject.R;
 
@@ -19,11 +27,13 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private Context context;
     private HashMap<String, List<MenuItem>> items;
     private List<String> listHeader;
+    private final MenuCategoryFragment menuCategoryFragment;
 
-    public ExpandableListAdapter(List<String> listHeader,HashMap<String,List<MenuItem>> items)
+    public ExpandableListAdapter(List<String> listHeader,HashMap<String,List<MenuItem>> items, MenuCategoryFragment menuCategoryFragment)
     {
         this.items = items;
         this.listHeader = listHeader;
+        this.menuCategoryFragment = menuCategoryFragment;
     }
 
     @Override
@@ -101,10 +111,47 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         }
 
 
-        Object item = items.get(listHeader.get(groupPos)).get(itemPos).getTitle();
+        MenuItem menuItem = items.get(listHeader.get(groupPos)).get(itemPos);
+        String title = menuItem.getTitle();
 
         TextView textView = view.findViewById(R.id.textItem);
-        textView.setText(String.valueOf(item));
+        textView.setText(title);
+
+        ImageButton addToCart = view.findViewById(R.id.addToCartImageButton);
+        addToCart.setOnClickListener(view1 -> {
+            MainActivity activity = (MainActivity) menuCategoryFragment.getActivity();
+            menuItem.setImageResourceId(R.drawable.cart_placeholder_image);
+            List<CartItem> currentCartItems = activity.getOrderViewModel().getOrder().getCartItemList();
+            String snackBarText = "";
+
+            CartItem cartItem = currentCartItems.stream().filter(ci -> ci.getProduct().getTitle().equals(menuItem.getTitle())).findFirst().orElse(null);
+
+            // create new cart item else plus one the quantity of the existing cartItem
+            if(cartItem == null) {
+                currentCartItems.add(new CartItem()
+                        .setProduct(menuItem)
+                        .setQuantity(1)
+                        .setUnitPrice(menuItem.getPrice()));
+
+                snackBarText = "Added " + menuItem.getTitle() + " to the cart.";
+            } else {
+                int quantity = cartItem.getQuantity();
+                cartItem.setQuantity(++quantity);
+
+                snackBarText = "Added one more " + menuItem.getTitle() + " to the cart.";
+            }
+
+            Snackbar.make(menuCategoryFragment.getView(), snackBarText, Snackbar.LENGTH_SHORT)
+                    .setAction("VIEW CART", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view1) {
+                            Fragment fragment = new CartItemListFragment();
+                            menuCategoryFragment.getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fl_wrapper,fragment).commit();
+                        }
+                    })
+                    .show();
+        });
+
         return view;
     }
 
