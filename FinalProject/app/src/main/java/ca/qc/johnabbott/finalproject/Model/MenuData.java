@@ -5,11 +5,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import ca.qc.johnabbott.finalproject.R;
+
 public class MenuData {
 
     private static List<MenuItem> pizza;
     private static List<MenuItem> sides;
     private static List<MenuItem> drinks;
+    private static List<MenuItem> combos;
     private static HashMap<String,List<MenuItem>> items;
 
     public static void loadData() throws ParseException {
@@ -17,6 +20,7 @@ public class MenuData {
         sides = new ArrayList<>();
         drinks = new ArrayList<>();
         items = new HashMap<>();
+        combos = new ArrayList<>();
 
         pizza.add(new MenuItem()
                 .setCategory("Pizza")
@@ -150,10 +154,30 @@ public class MenuData {
                 .setSize(null)
                 .setDescription("Light.Crisp Refreshing. With zero sugar, zero calories and zero carbs")
                 .setPrice(2.99));
+        combos.add(new MenuItem()
+            .setCategory("Combo")
+            .setTitle("Special 1")
+            .setDescription("2 large pizzas+2 drinks+fries")
+            .setPrice(25.99)
+                .setImageResourceId(R.drawable.firstcombo));
+
+        combos.add(new MenuItem()
+                .setCategory("Combo")
+                .setTitle("Special 2")
+                .setDescription("Buy 1 large pizza, get small free")
+                .setPrice(17.99)
+                .setImageResourceId(R.drawable.secondcombo));
+        combos.add(new MenuItem()
+                .setCategory("Combo")
+                .setTitle("Special 3")
+                .setDescription("1 Large pizza+6 chicken wings+ 1 drink")
+                .setPrice(20.99)
+                .setImageResourceId(R.drawable.thirdcombo));
 
         items.put("Pizza", pizza);
         items.put("Sides", sides);
         items.put("Drinks",drinks);
+        items.put("Combo",combos);
     }
 
     public static HashMap<String, List<MenuItem>> getData() {
