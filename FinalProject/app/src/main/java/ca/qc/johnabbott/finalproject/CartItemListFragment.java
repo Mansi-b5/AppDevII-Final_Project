@@ -89,7 +89,7 @@ public class CartItemListFragment extends Fragment {
         binding.checkoutButton.setOnClickListener(view -> {
 
             Fragment fragment = new CheckoutFragment();
-            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fl_wrapper,fragment).commit();
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main,fragment).commit();
         });
 
         return binding.getRoot();
