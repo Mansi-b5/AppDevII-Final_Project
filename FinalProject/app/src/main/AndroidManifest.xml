@@ -9,9 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalProject">
-        <meta-data
-            android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyAaT4IRGI8DQ1RpVXhEUlqm0fhrVZ4PlB0" />
         <activity
             android:name=".UI.MainActivity"
             android:exported="true"
