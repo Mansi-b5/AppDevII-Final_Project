@@ -8,6 +8,7 @@ public class Location {
     private int id;
     private UUID uuid;
 
+    private String name;
     private String address;
     private String hours;
     private String phoneNumber;
@@ -15,6 +16,13 @@ public class Location {
     private Double latitude;
     private Double longitude;
 
+    public String getName() {
+        return name;
+    }
+    public Location setName(String name) {
+        this.name = name;
+        return this;
+    }
 
     public Double getLatitude() {
         return latitude;
