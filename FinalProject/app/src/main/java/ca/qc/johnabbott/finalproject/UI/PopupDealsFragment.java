@@ -85,7 +85,7 @@ public class PopupDealsFragment extends DialogFragment {
                             @Override
                             public void onClick(View view1) {
                                 Fragment fragment = new CartItemListFragment();
-                                getFragment().getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fl_wrapper,fragment).commit();
+                                getFragment().getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main,fragment).commit();
                             }
                         })
                         .show();

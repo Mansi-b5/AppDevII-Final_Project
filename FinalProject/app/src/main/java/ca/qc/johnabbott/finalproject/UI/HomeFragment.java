@@ -75,7 +75,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Fragment fragment = new MenuCategoryFragment();
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fl_wrapper,fragment).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main,fragment).commit();
 
             }
         });
@@ -83,7 +83,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Fragment fragment = new MenuCategoryFragment();
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fl_wrapper,fragment).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main,fragment).commit();
 
             }
         });
@@ -91,7 +91,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Fragment fragment = new MenuCategoryFragment();
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fl_wrapper,fragment).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main,fragment).commit();
 
             }
         });

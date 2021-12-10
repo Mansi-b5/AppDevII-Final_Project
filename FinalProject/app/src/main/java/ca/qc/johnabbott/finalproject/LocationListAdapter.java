@@ -61,16 +61,16 @@ public class LocationListAdapter extends RecyclerView.Adapter<LocationListAdapte
             binding.hours.setText(location.getHours());
             binding.phone.setText(location.getPhoneNumber());
 
-            binding.locationImage.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    String uri = "https://goo.gl/maps/P9CxKRDoxcwVZ4rWA";
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-                    intent.setPackage("com.google.android.apps.maps");
-
-                    context.startActivity(intent);
-                }
-            });
+//            binding.locationImage.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    String uri = "https://goo.gl/maps/P9CxKRDoxcwVZ4rWA";
+//                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+//                    intent.setPackage("com.google.android.apps.maps");
+//
+//                    context.startActivity(intent);
+//                }
+//            });
 
             binding.phone.setOnClickListener(new View.OnClickListener() {
                 @Override
