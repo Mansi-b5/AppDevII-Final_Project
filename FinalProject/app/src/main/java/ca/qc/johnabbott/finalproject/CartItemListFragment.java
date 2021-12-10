@@ -82,6 +82,15 @@ public class CartItemListFragment extends Fragment {
 
         populateTotalPriceTable();
 
+        //todo maybe have a isEmpty
+        if(((MainActivity) getActivity()).getOrderViewModel().getOrder().isEmpty())
+            binding.checkoutButton.setVisibility(View.INVISIBLE);
+
+        binding.checkoutButton.setOnClickListener(view -> {
+
+            Fragment fragment = new CheckoutFragment();
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fl_wrapper,fragment).commit();
+        });
 
         return binding.getRoot();
     }
