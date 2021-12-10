@@ -3,6 +3,7 @@ package ca.qc.johnabbott.finalproject.UI;
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -21,6 +22,12 @@ import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageClickListener;
 import com.synnapps.carouselview.ImageListener;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import ca.qc.johnabbott.finalproject.Model.MenuData;
+import ca.qc.johnabbott.finalproject.Model.MenuItem;
 import ca.qc.johnabbott.finalproject.R;
 import ca.qc.johnabbott.finalproject.databinding.FragmentHomeBinding;
 
@@ -41,13 +48,12 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        int[] sampleImages = {R.drawable.firstcombo,R.drawable.secondcombo,R.drawable.thirdcombo};
-
+        List<MenuItem> menuDataComboList = MenuData.getData().get("Combo");
 
         binding.carouselView.setImageListener(new ImageListener() {
             @Override
             public void setImageForPosition(int position, ImageView imageView) {
-                imageView.setImageResource(sampleImages[position]);
+                imageView.setImageResource(menuDataComboList.get(position).getImageResourceId());
             }
 
         });
@@ -55,43 +61,46 @@ public class HomeFragment extends Fragment {
            @Override
            public void onClick(int position) {
                PopupDealsFragment popupDealsFragment = new PopupDealsFragment();
-               switch (position)
-               {
-                   case 0:
-                       popupDealsFragment.set_combo("2 large pizzas+2 drinks+fries");
-                       popupDealsFragment.set_price("$25.99");
-                       popupDealsFragment.set_image(R.drawable.firstcombo);
 
-                       break;
-                   case 1:
-                       popupDealsFragment.set_combo("Buy 1 large pizza, get small free");
-                       popupDealsFragment.set_price("$17.99");
-                       popupDealsFragment.set_image(R.drawable.secondcombo);
-                       break;
-                   case 2:
-                       popupDealsFragment.set_combo("1 Large pizza+6 chicken wings+ 1 drink");
-                       popupDealsFragment.set_price("$20.99");
-                       popupDealsFragment.set_image(R.drawable.thirdcombo);
-                       break;
 
-               }
-               popupDealsFragment.show(getFragmentManager(), "deals");
+               popupDealsFragment.setMenuItem(menuDataComboList.get(position));
+               popupDealsFragment.setHomeFragment(fragment());
+               popupDealsFragment.show(getActivity().getSupportFragmentManager(), "deals");
 
            }
        });
-        binding.carouselView.setPageCount(sampleImages.length);
+        binding.carouselView.setPageCount(menuDataComboList.size());
 
         binding.pizzaImageview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Fragment fragment = new MenuCategoryFragment();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fl_wrapper,fragment).commit();
 
+            }
+        });
+        binding.drinksImageview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment fragment = new MenuCategoryFragment();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fl_wrapper,fragment).commit();
 
+            }
+        });
+        binding.sidesImageview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment fragment = new MenuCategoryFragment();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fl_wrapper,fragment).commit();
 
             }
         });
 
 
+    }
+    private HomeFragment fragment()
+    {
+        return this;
     }
 
     @Override
