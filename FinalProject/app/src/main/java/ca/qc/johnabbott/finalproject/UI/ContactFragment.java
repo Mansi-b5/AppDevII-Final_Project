@@ -110,6 +110,20 @@ public class ContactFragment extends Fragment implements OnMapReadyCallback {
                 public boolean onMarkerClick(@NonNull Marker marker) {
                     Snackbar snackbar = Snackbar.make(view, marker.getTitle()+" Selected", 1000);
                     snackbar.show();
+                    MainActivity mainActivity = (MainActivity) getActivity();
+                    String check = marker.getTitle();
+                    String ha = check;
+                    for (Location location2: LocationData.getData()) {
+                        if(marker.getTitle().equals(location2.getName()))
+                        {
+                            location2.setSelected(true);
+                            mainActivity.getOrderViewModel().getOrder().setLocation(location2);
+                        }
+                        else{
+                            location2.setSelected(false);
+                        }
+                    }
+
                     return false;
                 }
             });

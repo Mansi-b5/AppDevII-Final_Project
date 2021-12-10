@@ -17,12 +17,22 @@ public class Location implements Identifiable<Long> {
     private String map;
     private Double latitude;
     private Double longitude;
+    private boolean selected = false;
 
     public String getName() {
         return name;
     }
     public Location setName(String name) {
         this.name = name;
+        return this;
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public Location setSelected(boolean selected) {
+        this.selected = selected;
         return this;
     }
 

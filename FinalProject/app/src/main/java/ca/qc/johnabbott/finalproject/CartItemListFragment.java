@@ -70,6 +70,10 @@ public class CartItemListFragment extends Fragment {
 
         binding = FragmentCartItemListBinding.inflate(inflater, container, false);
 
+        if(((MainActivity) getActivity()).getOrderViewModel().getOrder().getLocation() != null){
+            binding.orderInfoTextView.setText(((MainActivity) getActivity()).getOrderViewModel().getOrder().getLocation().getName());
+        }
+
         // Set the adapter
         Context context = getContext();
         if (mColumnCount <= 1) {

@@ -12,6 +12,8 @@ public class Order {
     private List<CartItem> cartItemList;
     private OrderStatus status;
 
+    private Location location;
+
     public Order() {
         id = CURRENT_LOCAL_ID++;
         cartItemList = new ArrayList<>();
@@ -52,5 +54,14 @@ public class Order {
 
     public boolean isEmpty() {
         return cartItemList.isEmpty();
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public Order setLocation(Location location) {
+        this.location = location;
+        return this;
     }
 }
