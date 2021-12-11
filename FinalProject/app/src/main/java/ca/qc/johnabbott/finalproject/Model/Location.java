@@ -2,16 +2,56 @@ package ca.qc.johnabbott.finalproject.Model;
 
 import java.util.UUID;
 
-public class Location {
+import ca.qc.johnabbott.finalproject.sqlite.Identifiable;
+
+public class Location implements Identifiable<Long> {
     private static int CURRENT_LOCAL_ID = 0;
 
-    private int id;
+    private long id;
     private UUID uuid;
 
+    private String name;
     private String address;
     private String hours;
     private String phoneNumber;
     private String map;
+    private Double latitude;
+    private Double longitude;
+    private boolean selected = false;
+
+    public String getName() {
+        return name;
+    }
+    public Location setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public Location setSelected(boolean selected) {
+        this.selected = selected;
+        return this;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+    public Location setLatitude(Double latitude) {
+        this.latitude = latitude;
+        return this;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+    public Location setLongitude(Double longitude) {
+        this.longitude = longitude;
+        return this;
+    }
+
 
     public Location() { this(++CURRENT_LOCAL_ID, UUID.randomUUID()); }
 
@@ -22,11 +62,20 @@ public class Location {
         this.hours = null;
         this.phoneNumber = null;
         this.map = null;
+        this.latitude = null;
+        this.longitude = null;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
+
+    @Override
+    public Identifiable<Long> setId(Long id) {
+        this.id = id;
+        return this;
+    }
+
     public Location setId(int id) {
         this.id = id;
         return this;

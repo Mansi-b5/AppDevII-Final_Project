@@ -1,5 +1,6 @@
 package ca.qc.johnabbott.finalproject.Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
@@ -11,8 +12,11 @@ public class Order {
     private List<CartItem> cartItemList;
     private OrderStatus status;
 
+    private Location location;
+
     public Order() {
         id = CURRENT_LOCAL_ID++;
+        cartItemList = new ArrayList<>();
     }
 
     public Order(int id, List<CartItem> cartItemList, OrderStatus status) {
@@ -45,6 +49,19 @@ public class Order {
 
     public Order setStatus(OrderStatus status) {
         this.status = status;
+        return this;
+    }
+
+    public boolean isEmpty() {
+        return cartItemList.isEmpty();
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public Order setLocation(Location location) {
+        this.location = location;
         return this;
     }
 }

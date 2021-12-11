@@ -34,6 +34,9 @@
         <action
             android:id="@+id/action_menuFragment_to_thirdFragment"
             app:destination="@id/thirdFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_menu_details"
+            app:destination="@id/menu_details" />
     </fragment>
 
     <fragment
@@ -47,5 +50,10 @@
             app:destination="@id/FirstFragment" />
 
     </fragment>
+    <fragment
+        android:id="@+id/menu_details"
+        android:name="ca.qc.johnabbott.finalproject.menuDetails"
+        android:label="fragment_menu_details"
+        tools:layout="@layout/fragment_menu_details" />
 
 </navigation>
