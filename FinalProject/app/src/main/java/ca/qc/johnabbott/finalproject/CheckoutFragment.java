@@ -6,18 +6,30 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import ca.qc.johnabbott.finalproject.Model.CartItem;
+import ca.qc.johnabbott.finalproject.Model.Location;
+import ca.qc.johnabbott.finalproject.Model.LocationData;
+import ca.qc.johnabbott.finalproject.Model.Order;
+import ca.qc.johnabbott.finalproject.Model.SpinAdapter;
 import ca.qc.johnabbott.finalproject.UI.MainActivity;
 import ca.qc.johnabbott.finalproject.databinding.FragmentCheckoutBinding;
 
 public class CheckoutFragment extends Fragment {
 
     private FragmentCheckoutBinding binding;
+
+    private Spinner spinner;
+    private SpinAdapter spinAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,11 +43,40 @@ public class CheckoutFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         MainActivity activity = (MainActivity) getActivity();
-        String orderDetails = "";
-        for (CartItem cartItem : activity.getOrderViewModel().getOrder().getCartItemList()) {
-            orderDetails += cartItem.getQuantity() + " " + cartItem.getProduct().getTitle() + "\n";
+        Order order = activity.getOrderViewModel().getOrder();
+
+        Location[] locations = LocationData.getData().toArray(new Location[0]);
+        spinAdapter = new SpinAdapter(getContext(), android.R.layout.simple_spinner_item, locations);
+        spinner = binding.locationSpinner;
+        spinner.setAdapter(spinAdapter);
+        if(order.getLocation() != null) {
+            spinner.setSelection(spinAdapter.getPosition(order.getLocation()));
         }
-        binding.orderDetailsTextView.setText(orderDetails);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                order.setLocation(spinAdapter.getItem(position));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        binding.radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
+                switch (checkedId) {
+                    case R.id.deliveryRadioButton:
+                        binding.deliveryWarningTextView.setVisibility(View.VISIBLE);
+                        break;
+                    case R.id.pickupRadioButton:
+                        binding.deliveryWarningTextView.setVisibility(View.GONE);
+                        break;
+                }
+            }
+        });
     }
 
     @Override
