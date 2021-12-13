@@ -7,26 +7,14 @@
     android:layout_height="match_parent"
     tools:context=".CheckoutFragment">
 
-    <TextView
-        android:id="@+id/orderDetailsTextView"
-        android:layout_width="318dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="48dp"
-        android:text="Order details"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TableLayout
         android:id="@+id/checkouTtableLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/orderDetailsTextView">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TableRow
             android:id="@+id/nameRow"
@@ -39,17 +27,20 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|right"
                 android:layout_marginRight="10dp"
-                android:text="Customer name"
+                android:layout_weight="1"
+                android:text="Name"
                 android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/nameEditText"
-                android:layout_width="175dp"
+                android:layout_width="200dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
+                android:layout_weight="2"
                 android:ems="10"
+                android:hint="your name here"
                 android:inputType="textPersonName"
-                android:text="Name" />
+                tools:ignore="SpeakableTextPresentCheck" />
         </TableRow>
 
         <TableRow
@@ -63,6 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|right"
                 android:layout_marginRight="10dp"
+                android:layout_weight="1"
                 android:text="Phone Number"
                 android:textSize="20sp" />
 
@@ -71,7 +63,9 @@
                 android:layout_width="175dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
+                android:layout_weight="2"
                 android:ems="10"
+                android:hint="your phone # here"
                 android:inputType="phone"
                 tools:ignore="SpeakableTextPresentCheck" />
         </TableRow>
@@ -87,6 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|right"
                 android:layout_marginRight="10dp"
+                android:layout_weight="1"
                 android:text="Address"
                 android:textSize="20sp" />
 
@@ -95,34 +90,12 @@
                 android:layout_width="175dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
+                android:layout_weight="2"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name" />
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tipRow"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/tipTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|right"
-                android:layout_marginRight="10dp"
-                android:text="Tip"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/tipEditText"
-                android:layout_width="175dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:ems="10"
-                android:inputType="number"
+                android:hint="your address here"
+                android:inputType="textShortMessage|textLongMessage|text"
                 tools:ignore="SpeakableTextPresentCheck" />
+
         </TableRow>
 
         <TableRow
@@ -136,6 +109,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|right"
                 android:layout_marginRight="10dp"
+                android:layout_weight="1"
                 android:text="Email"
                 android:textSize="20sp" />
 
@@ -144,7 +118,9 @@
                 android:layout_width="175dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
+                android:layout_weight="2"
                 android:ems="10"
+                android:hint="your email here"
                 android:inputType="textEmailAddress"
                 tools:ignore="SpeakableTextPresentCheck" />
         </TableRow>
@@ -160,6 +136,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|right"
                 android:layout_marginRight="10dp"
+                android:layout_weight="1"
                 android:text="Location"
                 android:textSize="20sp" />
 
@@ -168,6 +145,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
+                android:layout_weight="2"
                 tools:ignore="SpeakableTextPresentCheck" />
         </TableRow>
 
@@ -182,25 +160,28 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|right"
                 android:layout_marginRight="10dp"
+                android:layout_weight="1"
                 android:text="Setting"
                 android:textSize="20sp" />
 
             <RadioGroup
-                android:layout_width="wrap_content"
+                android:id="@+id/radioGroup"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_weight="2"
                 android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/pickupRadioButton"
-                    android:layout_width="87.5dp"
+                    android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
                     android:text="Pickup" />
 
                 <RadioButton
                     android:id="@+id/deliveryRadioButton"
-                    android:layout_width="87.5dp"
+                    android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
                     android:text="Delivery" />
@@ -213,11 +194,22 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="44dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="40dp"
         android:backgroundTint="#000000"
         android:text="Confirm order"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/deliveryWarningTextView" />
+
+    <TextView
+        android:id="@+id/deliveryWarningTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Payment at door for delivery"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkouTtableLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
