@@ -102,22 +102,27 @@ public class ContactFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
 
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(45.40658109095025, -73.94171747323092), 12.0f));
+        //Hardcoded values to abbott because getting the location of the users actual current location was a little too complicated for me. -Bhavik
+        //Zoom
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(45.40658109095025, -73.94171747323092), 10.0f));
+
         View view = binding.getRoot();
+        //A marker is made for each location in the list
         for (LocationD locationl: LocationData.getData()) {
             googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
                 @Override
                 public boolean onMarkerClick(@NonNull Marker marker) {
+                    //Snackbar pops up, saying that a spot has been selected.
                     Snackbar snackbar = Snackbar.make(view, marker.getTitle()+" Selected", 1000);
                     snackbar.show();
 
                     MainActivity mainActivity = (MainActivity) getActivity();
-                    String check = marker.getTitle();
-                    String ha = check;
+
                     for (LocationD location2: LocationData.getData()) {
                         if(marker.getTitle().equals(location2.getName()))
                         {
                             location2.setSelected(true);
+                            //Sets a location in the cart page
                             mainActivity.getOrderViewModel().getOrder().setLocation(location2);
                         }
                         else{
@@ -128,6 +133,7 @@ public class ContactFragment extends Fragment implements OnMapReadyCallback {
                     return false;
                 }
             });
+            //Could not figure out how to make the marker boxes bigger.
             googleMap.addMarker(new MarkerOptions().position(new LatLng(locationl.getLatitude(), locationl.getLongitude())).title(locationl.getName()).snippet(locationl.getAddress()));
         }
 
