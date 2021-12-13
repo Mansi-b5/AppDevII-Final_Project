@@ -7,9 +7,9 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -18,10 +18,8 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.snackbar.Snackbar;
 
-import java.util.Map;
-
 import ca.qc.johnabbott.finalproject.LocationListAdapter;
-import ca.qc.johnabbott.finalproject.Model.Location;
+import ca.qc.johnabbott.finalproject.Model.LocationD;
 import ca.qc.johnabbott.finalproject.Model.LocationData;
 import ca.qc.johnabbott.finalproject.R;
 import ca.qc.johnabbott.finalproject.databinding.FragmentContactBinding;
@@ -103,17 +101,20 @@ public class ContactFragment extends Fragment implements OnMapReadyCallback {
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
+
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(45.40658109095025, -73.94171747323092), 12.0f));
         View view = binding.getRoot();
-        for (Location location: LocationData.getData()) {
+        for (LocationD locationl: LocationData.getData()) {
             googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
                 @Override
                 public boolean onMarkerClick(@NonNull Marker marker) {
                     Snackbar snackbar = Snackbar.make(view, marker.getTitle()+" Selected", 1000);
                     snackbar.show();
+
                     MainActivity mainActivity = (MainActivity) getActivity();
                     String check = marker.getTitle();
                     String ha = check;
-                    for (Location location2: LocationData.getData()) {
+                    for (LocationD location2: LocationData.getData()) {
                         if(marker.getTitle().equals(location2.getName()))
                         {
                             location2.setSelected(true);
@@ -127,7 +128,7 @@ public class ContactFragment extends Fragment implements OnMapReadyCallback {
                     return false;
                 }
             });
-            googleMap.addMarker(new MarkerOptions().position(new LatLng(location.getLatitude(), location.getLongitude())).title(location.getName()).snippet(location.getAddress()));
+            googleMap.addMarker(new MarkerOptions().position(new LatLng(locationl.getLatitude(), locationl.getLongitude())).title(locationl.getName()).snippet(locationl.getAddress()));
         }
 
     }

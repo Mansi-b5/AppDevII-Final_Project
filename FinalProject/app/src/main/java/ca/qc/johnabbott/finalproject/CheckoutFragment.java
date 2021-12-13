@@ -6,18 +6,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.TextView;
 
-import ca.qc.johnabbott.finalproject.Model.CartItem;
-import ca.qc.johnabbott.finalproject.Model.Location;
+import ca.qc.johnabbott.finalproject.Model.LocationD;
 import ca.qc.johnabbott.finalproject.Model.LocationData;
 import ca.qc.johnabbott.finalproject.Model.Order;
 import ca.qc.johnabbott.finalproject.Model.SpinAdapter;
@@ -45,7 +41,7 @@ public class CheckoutFragment extends Fragment {
         MainActivity activity = (MainActivity) getActivity();
         Order order = activity.getOrderViewModel().getOrder();
 
-        Location[] locations = LocationData.getData().toArray(new Location[0]);
+        LocationD[] locations = LocationData.getData().toArray(new LocationD[0]);
         spinAdapter = new SpinAdapter(getContext(), android.R.layout.simple_spinner_item, locations);
         spinner = binding.locationSpinner;
         spinner.setAdapter(spinAdapter);

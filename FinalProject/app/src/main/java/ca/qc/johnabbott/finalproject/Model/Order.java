@@ -12,7 +12,7 @@ public class Order {
     private List<CartItem> cartItemList;
     private OrderStatus status;
 
-    private Location location;
+    private LocationD location;
 
     public Order() {
         id = CURRENT_LOCAL_ID++;
@@ -56,11 +56,11 @@ public class Order {
         return cartItemList.isEmpty();
     }
 
-    public Location getLocation() {
+    public LocationD getLocation() {
         return location;
     }
 
-    public Order setLocation(Location location) {
+    public Order setLocation(LocationD location) {
         this.location = location;
         return this;
     }

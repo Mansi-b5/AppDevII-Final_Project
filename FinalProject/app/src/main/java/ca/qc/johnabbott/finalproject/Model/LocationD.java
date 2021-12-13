@@ -4,7 +4,7 @@ import java.util.UUID;
 
 import ca.qc.johnabbott.finalproject.sqlite.Identifiable;
 
-public class Location implements Identifiable<Long> {
+public class LocationD implements Identifiable<Long> {
     private static int CURRENT_LOCAL_ID = 0;
 
     private long id;
@@ -22,7 +22,7 @@ public class Location implements Identifiable<Long> {
     public String getName() {
         return name;
     }
-    public Location setName(String name) {
+    public LocationD setName(String name) {
         this.name = name;
         return this;
     }
@@ -31,7 +31,7 @@ public class Location implements Identifiable<Long> {
         return selected;
     }
 
-    public Location setSelected(boolean selected) {
+    public LocationD setSelected(boolean selected) {
         this.selected = selected;
         return this;
     }
@@ -39,7 +39,7 @@ public class Location implements Identifiable<Long> {
     public Double getLatitude() {
         return latitude;
     }
-    public Location setLatitude(Double latitude) {
+    public LocationD setLatitude(Double latitude) {
         this.latitude = latitude;
         return this;
     }
@@ -47,15 +47,15 @@ public class Location implements Identifiable<Long> {
     public Double getLongitude() {
         return longitude;
     }
-    public Location setLongitude(Double longitude) {
+    public LocationD setLongitude(Double longitude) {
         this.longitude = longitude;
         return this;
     }
 
 
-    public Location() { this(++CURRENT_LOCAL_ID, UUID.randomUUID()); }
+    public LocationD() { this(++CURRENT_LOCAL_ID, UUID.randomUUID()); }
 
-    public Location( int id, UUID uuid){
+    public LocationD(int id, UUID uuid){
         this.id = id;
         this.uuid = uuid;
         this.address = null;
@@ -76,7 +76,7 @@ public class Location implements Identifiable<Long> {
         return this;
     }
 
-    public Location setId(int id) {
+    public LocationD setId(int id) {
         this.id = id;
         return this;
     }
@@ -84,7 +84,7 @@ public class Location implements Identifiable<Long> {
     public UUID getUuid() {
         return uuid;
     }
-    public Location setUuid(UUID uuid) {
+    public LocationD setUuid(UUID uuid) {
         this.uuid = uuid;
         return this;
     }
@@ -92,7 +92,7 @@ public class Location implements Identifiable<Long> {
     public String getAddress() {
         return address;
     }
-    public Location setAddress(String address) {
+    public LocationD setAddress(String address) {
         this.address = address;
         return this;
     }
@@ -100,7 +100,7 @@ public class Location implements Identifiable<Long> {
     public String getHours() {
         return hours;
     }
-    public Location setHours(String hours) {
+    public LocationD setHours(String hours) {
         this.hours = hours;
         return this;
     }
@@ -108,7 +108,7 @@ public class Location implements Identifiable<Long> {
     public String getPhoneNumber() {
         return phoneNumber;
     }
-    public Location setPhoneNumber(String phoneNumber) {
+    public LocationD setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
         return this;
     }
@@ -116,7 +116,7 @@ public class Location implements Identifiable<Long> {
     public String getMap() {
         return map;
     }
-    public Location setMap(String map) {
+    public LocationD setMap(String map) {
         this.map = map;
         return this;
     }

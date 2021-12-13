@@ -8,7 +8,7 @@ import ca.qc.johnabbott.finalproject.sqlite.Column;
 import ca.qc.johnabbott.finalproject.sqlite.DatabaseException;
 import ca.qc.johnabbott.finalproject.sqlite.Table;
 
-public class LocationTable extends Table<Location> {
+public class LocationTable extends Table<LocationD> {
 
     public static final String TABLE_NAME = "location";
 
@@ -30,7 +30,7 @@ public class LocationTable extends Table<Location> {
     }
 
     @Override
-    protected ContentValues toContentValues(Location element) throws DatabaseException {
+    protected ContentValues toContentValues(LocationD element) throws DatabaseException {
         ContentValues values = new ContentValues();
 
         values.put(COLUMN_NAME, element.getName());
@@ -44,8 +44,8 @@ public class LocationTable extends Table<Location> {
     }
 
     @Override
-    protected Location fromCursor(Cursor cursor) throws DatabaseException {
-        Location location = new Location()
+    protected LocationD fromCursor(Cursor cursor) throws DatabaseException {
+        LocationD location = new LocationD()
                 .setId(cursor.getInt(0))
                 .setName(cursor.getString(1))
                 .setAddress(cursor.getString(2))
