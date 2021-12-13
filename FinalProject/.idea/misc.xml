@@ -3,8 +3,26 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Computer Science Semester 5-Fall 2021/Application Development 2/Github-AppDev2/Project/AppDevII-Final_Project/FinalProject/app/src/main/res/layout/fragment_contact.xml" value="0.28940217391304346" />
-        <entry key="..\:/Computer Science Semester 5-Fall 2021/Application Development 2/Github-AppDev2/Project/AppDevII-Final_Project/FinalProject/app/src/main/res/layout/list_item_location.xml" value="0.28940217391304346" />
+        <entry key="..\:/Computer Science Semester 5-Fall 2021/Application Development 2/Github-AppDev2/Project/AppDevII-Final_Project/FinalProject/app/src/main/res/layout/activity_main.xml" value="0.36277173913043476" />
+        <entry key="..\:/Computer Science Semester 5-Fall 2021/Application Development 2/Github-AppDev2/Project/AppDevII-Final_Project/FinalProject/app/src/main/res/layout/content_main.xml" value="0.3591485507246377" />
+        <entry key="..\:/Computer Science Semester 5-Fall 2021/Application Development 2/Github-AppDev2/Project/AppDevII-Final_Project/FinalProject/app/src/main/res/layout/fragment_cart.xml" value="0.3591485507246377" />
+        <entry key="..\:/Computer Science Semester 5-Fall 2021/Application Development 2/Github-AppDev2/Project/AppDevII-Final_Project/FinalProject/app/src/main/res/layout/fragment_cart_item_list.xml" value="0.23645833333333333" />
+        <entry key="..\:/Computer Science Semester 5-Fall 2021/Application Development 2/Github-AppDev2/Project/AppDevII-Final_Project/FinalProject/app/src/main/res/layout/fragment_contact.xml" value="0.3591485507246377" />
+        <entry key="..\:/Computer Science Semester 5-Fall 2021/Application Development 2/Github-AppDev2/Project/AppDevII-Final_Project/FinalProject/app/src/main/res/layout/fragment_home.xml" value="0.3591485507246377" />
+        <entry key="..\:/Computer Science Semester 5-Fall 2021/Application Development 2/Github-AppDev2/Project/AppDevII-Final_Project/FinalProject/app/src/main/res/layout/fragment_menu.xml" value="0.20520833333333333" />
+        <entry key="..\:/Computer Science Semester 5-Fall 2021/Application Development 2/Github-AppDev2/Project/AppDevII-Final_Project/FinalProject/app/src/main/res/layout/fragment_menu_list.xml" value="0.20520833333333333" />
+        <entry key="..\:/Computer Science Semester 5-Fall 2021/Application Development 2/Github-AppDev2/Project/AppDevII-Final_Project/FinalProject/app/src/main/res/layout/list_item_cart_item.xml" value="0.33" />
+        <entry key="..\:/Computer Science Semester 5-Fall 2021/Application Development 2/Github-AppDev2/Project/AppDevII-Final_Project/FinalProject/app/src/main/res/layout/list_item_location.xml" value="0.30526315789473685" />
+        <entry key="..\:/Users/Daniel/Desktop/Github/Repos/AppDevII-Final_Project/FinalProject/app/src/main/res/layout/activity_main.xml" value="0.35260416666666666" />
+        <entry key="..\:/Users/Daniel/Desktop/Github/Repos/AppDevII-Final_Project/FinalProject/app/src/main/res/layout/activity_splash_screen.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Daniel/Desktop/Github/Repos/AppDevII-Final_Project/FinalProject/app/src/main/res/layout/fragment_cart.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Daniel/Desktop/Github/Repos/AppDevII-Final_Project/FinalProject/app/src/main/res/layout/fragment_contact.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Daniel/Desktop/Github/Repos/AppDevII-Final_Project/FinalProject/app/src/main/res/layout/fragment_first.xml" value="0.33" />
+        <entry key="..\:/Users/Daniel/Desktop/Github/Repos/AppDevII-Final_Project/FinalProject/app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="..\:/Users/Daniel/Desktop/Github/Repos/AppDevII-Final_Project/FinalProject/app/src/main/res/menu/menu_main.xml" value="0.35260416666666666" />
+        <entry key="..\:/Users/Daniel/Desktop/Github/Repos/AppDevII-Final_Project/FinalProject/app/src/main/res/menu/nav_menu.xml" value="0.35260416666666666" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_popupdealswindow.xml" value="0.24320652173913043" />
       </map>
     </option>
   </component>
