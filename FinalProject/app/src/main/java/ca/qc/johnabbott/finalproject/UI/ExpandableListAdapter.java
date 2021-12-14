@@ -1,7 +1,6 @@
 package ca.qc.johnabbott.finalproject.UI;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,11 +9,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -25,7 +21,6 @@ import ca.qc.johnabbott.finalproject.CartItemListFragment;
 import ca.qc.johnabbott.finalproject.Model.CartItem;
 import ca.qc.johnabbott.finalproject.Model.MenuItem;
 import ca.qc.johnabbott.finalproject.R;
-import ca.qc.johnabbott.finalproject.menuDetails;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
@@ -115,7 +110,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.fragment_menu_item,viewGroup,false);
         }
 
-
+        MainActivity activity = (MainActivity) menuCategoryFragment.getActivity();
         MenuItem menuItem = items.get(listHeader.get(groupPos)).get(itemPos);
         String title = menuItem.getTitle();
         TextView textView = view.findViewById(R.id.textItem);
@@ -124,14 +119,17 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Fragment fragment = new menuDetails();
+
+               activity.getOrderViewModel().setItem(menuItem);
+               activity.getOrderViewModel().notifyChange();
+
+                Fragment fragment = new MenuDetails();
                 menuCategoryFragment.getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main,fragment).commit();
             }
         });
 
         ImageButton addToCart = view.findViewById(R.id.addToCartImageButton);
         addToCart.setOnClickListener(view1 -> {
-            MainActivity activity = (MainActivity) menuCategoryFragment.getActivity();
             menuItem.setImageResourceId(R.drawable.cart_placeholder_image);
             List<CartItem> currentCartItems = activity.getOrderViewModel().getOrder().getCartItemList();
             String snackBarText = "";

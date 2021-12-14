@@ -8,9 +8,6 @@ public class MenuItem {
     private String description;
     private double price;
     private Size size;
-
-
-
     private int imageResourceId;
 
     public MenuItem()

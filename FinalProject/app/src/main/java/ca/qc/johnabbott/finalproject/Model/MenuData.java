@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import ca.qc.johnabbott.finalproject.R;
+
 public class MenuData {
 
     private static List<MenuItem> pizza;
@@ -23,7 +25,8 @@ public class MenuData {
                 .setTitle("Cheese")
                 .setSize(null)
                 .setDescription("Topped with a mix of mozzarella, provolone and parmesan.")
-                .setPrice(10.99));
+                .setPrice(10.99)
+                .setImageResourceId(R.drawable.pizza));
 
         pizza.add(new MenuItem()
                 .setCategory("Pizza")
