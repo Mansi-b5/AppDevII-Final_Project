@@ -1,7 +1,6 @@
 package ca.qc.johnabbott.finalproject.UI;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,11 +9,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -141,12 +137,12 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             List<CartItem> currentCartItems = activity.getOrderViewModel().getOrder().getCartItemList();
             String snackBarText = "";
 
-            CartItem cartItem = currentCartItems.stream().filter(ci -> ci.getProduct().getTitle().equals(menuItem.getTitle())).findFirst().orElse(null);
+            CartItem cartItem = currentCartItems.stream().filter(ci -> ci.getMenuItem().getTitle().equals(menuItem.getTitle())).findFirst().orElse(null);
 
             // create new cart item else plus one the quantity of the existing cartItem
             if(cartItem == null) {
                 currentCartItems.add(new CartItem()
-                        .setProduct(menuItem)
+                        .setMenuItem(menuItem)
                         .setQuantity(1)
                         .setUnitPrice(menuItem.getPrice()));
 
@@ -162,8 +158,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                     .setAction("VIEW CART", new View.OnClickListener() {
                         @Override
                         public void onClick(View view1) {
-                            Fragment fragment = new CartItemListFragment();
-                            menuCategoryFragment.getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main,fragment).commit();
+                            ((MainActivity) menuCategoryFragment.getActivity()).setter(R.id.ic_cart);
                         }
                     })
                     .show();

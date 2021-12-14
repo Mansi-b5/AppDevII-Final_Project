@@ -1,16 +1,20 @@
 package ca.qc.johnabbott.finalproject.Model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-public class Order {
+import ca.qc.johnabbott.finalproject.sqlite.Identifiable;
+
+public class Order implements Identifiable<Long> {
 
     // generate local IDs (in memory only).
     private static int CURRENT_LOCAL_ID = 0;
 
-    private int id;
+    private long id;
     private List<CartItem> cartItemList;
     private OrderStatus status;
+    private Date orderDate;
 
     private Location location;
 
@@ -25,12 +29,28 @@ public class Order {
         this.status = status;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public Order setId(int id) {
+    @Override
+    public Order setId(Long id) {
         this.id = id;
+        return this;
+    }
+
+//    public Order setId(int id) {
+//        this.id = id;
+//        return this;
+//    }
+
+
+    public Date getOrderDate() {
+        return orderDate;
+    }
+
+    public Order setOrderDate(Date date) {
+        this.orderDate = date;
         return this;
     }
 

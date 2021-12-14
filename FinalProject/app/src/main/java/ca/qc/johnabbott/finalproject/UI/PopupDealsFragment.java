@@ -2,7 +2,6 @@ package ca.qc.johnabbott.finalproject.UI;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -63,12 +62,12 @@ public class PopupDealsFragment extends DialogFragment {
                 List<CartItem> currentCartItems = activity.getOrderViewModel().getOrder().getCartItemList();
                 String snackBarText = "";
 
-                CartItem cartItem = currentCartItems.stream().filter(ci -> ci.getProduct().getTitle().equals(menuItem.getTitle())).findFirst().orElse(null);
+                CartItem cartItem = currentCartItems.stream().filter(ci -> ci.getMenuItem().getTitle().equals(menuItem.getTitle())).findFirst().orElse(null);
 
                 // create new cart item else plus one the quantity of the existing cartItem
                 if(cartItem == null) {
                     currentCartItems.add(new CartItem()
-                            .setProduct(menuItem)
+                            .setMenuItem(menuItem)
                             .setQuantity(1)
                             .setUnitPrice(menuItem.getPrice()));
 

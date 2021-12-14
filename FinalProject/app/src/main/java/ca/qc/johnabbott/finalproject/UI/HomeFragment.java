@@ -71,30 +71,9 @@ public class HomeFragment extends Fragment {
        });
         binding.carouselView.setPageCount(menuDataComboList.size());
 
-        binding.pizzaImageview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Fragment fragment = new MenuCategoryFragment();
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main,fragment).commit();
-
-            }
-        });
-        binding.drinksImageview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Fragment fragment = new MenuCategoryFragment();
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main,fragment).commit();
-
-            }
-        });
-        binding.sidesImageview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Fragment fragment = new MenuCategoryFragment();
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main,fragment).commit();
-
-            }
-        });
+        binding.pizzaImageview.setOnClickListener(pizzaImageView -> ((MainActivity) getActivity()).setter(R.id.ic_menu));
+        binding.drinksImageview.setOnClickListener(drinksImageview -> ((MainActivity) getActivity()).setter(R.id.ic_menu));
+        binding.sidesImageview.setOnClickListener(sidesImageview -> ((MainActivity) getActivity()).setter(R.id.ic_menu));
 
 
     }

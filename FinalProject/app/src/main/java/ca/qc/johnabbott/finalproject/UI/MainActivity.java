@@ -74,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
 //        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
 //        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-
         binding.bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -113,6 +112,10 @@ public class MainActivity extends AppCompatActivity {
         List<CartItem> emptyList = new ArrayList<>();
         testOrder.setCartItemList(emptyList);
         orderViewModel.setOrder(testOrder);
+    }
+
+    public void setter(int id) {
+        binding.bottomNavigation.setSelectedItemId(id);
     }
 
     @Override
