@@ -60,28 +60,12 @@ public class MenuCategoryFragment extends Fragment {
         try {
             List<MenuItem> list = dbHandler.getMenuItemTable().readAll();
             items = groupByHashMap(list);
-            //items = MenuData.getData();
-            //listHeader = new ArrayList<>(items.keySet());
-            listHeader = new ArrayList<>();
-
-            for(Map.Entry<String,List<MenuItem>> entry : items.entrySet())
-            {
-                listHeader.add(entry.getKey());
-
-            }
-
+            listHeader = new ArrayList<>(items.keySet());
             expandableListView.setAdapter(new ExpandableListAdapter(listHeader, items, this));
             expandableListView.setGroupIndicator(null);
-
-
         } catch (DatabaseException e) {
             e.printStackTrace();
         }
-
-
-
-
-
     }
     private HashMap<String, List<MenuItem>> groupByHashMap(List<MenuItem> items)
     {

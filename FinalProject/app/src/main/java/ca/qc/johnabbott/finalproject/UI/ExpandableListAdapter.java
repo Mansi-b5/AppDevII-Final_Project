@@ -87,22 +87,27 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         LinearLayout linearLayout = view.findViewById(R.id.cardViewColor);
         ImageView imageView = view.findViewById(R.id.image);
 
-        if(listHeader.get(groupPos) == "Pizza")
-        {
-            textView.setText(String.valueOf(getGroup(groupPos)));
-            linearLayout.setBackgroundResource(R.drawable.gradient1);
-            imageView.setBackgroundResource(R.drawable.ic_baseline_local_pizza_24);
-        }
-        else if(listHeader.get(groupPos) == "Sides")
-        {
-            textView.setText(String.valueOf(getGroup(groupPos)));
-            linearLayout.setBackgroundResource(R.drawable.gradient2);
-            imageView.setBackgroundResource(R.drawable.ic_baseline_fastfood_24);
-        }
-        else if(listHeader.get(groupPos) == "Drinks"){
-            textView.setText(String.valueOf(getGroup(groupPos)));
-            linearLayout.setBackgroundResource(R.drawable.gradient3);
-            imageView.setBackgroundResource(R.drawable.ic_baseline_local_drink_24);
+        String header = listHeader.get(groupPos);
+        textView.setText(header);
+
+        switch (header) {
+            case "Pizza":
+                linearLayout.setBackgroundResource(R.drawable.gradient1);
+                imageView.setBackgroundResource(R.drawable.ic_baseline_local_pizza_24);
+                break;
+            case "Sides":
+                linearLayout.setBackgroundResource(R.drawable.gradient2);
+                imageView.setBackgroundResource(R.drawable.ic_baseline_fastfood_24);
+                break;
+            case "Drinks":
+                linearLayout.setBackgroundResource(R.drawable.gradient3);
+                imageView.setBackgroundResource(R.drawable.ic_baseline_local_drink_24);
+                break;
+            case "Combos":
+                //todo mantis change this
+                linearLayout.setBackgroundResource(R.drawable.gradient3);
+                imageView.setBackgroundResource(R.drawable.ic_baseline_local_drink_24);
+                break;
         }
 
         return view;
