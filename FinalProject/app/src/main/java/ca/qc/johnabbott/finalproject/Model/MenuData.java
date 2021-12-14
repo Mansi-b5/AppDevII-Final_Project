@@ -59,7 +59,7 @@ public class MenuData {
 
         pizza.add(new MenuItem()
                 .setCategory("Pizza")
-                .setTitle("All Dressed")
+                .setTitle("Chicken BBQ")
                 .setSize(null)
                 .setDescription("A topping of spicy barbeque sauce, diced chicken, cilantro, peppers, and onions")
                 .setPrice(10.99));
@@ -155,20 +155,20 @@ public class MenuData {
                 .setDescription("Light.Crisp Refreshing. With zero sugar, zero calories and zero carbs")
                 .setPrice(2.99));
         combos.add(new MenuItem()
-            .setCategory("Combo")
+            .setCategory("Combos")
             .setTitle("Special 1")
             .setDescription("2 large pizzas+2 drinks+fries")
             .setPrice(25.99)
                 .setImageResourceId(R.drawable.firstcombo));
 
         combos.add(new MenuItem()
-                .setCategory("Combo")
+                .setCategory("Combos")
                 .setTitle("Special 2")
                 .setDescription("Buy 1 large pizza, get small free")
                 .setPrice(17.99)
                 .setImageResourceId(R.drawable.secondcombo));
         combos.add(new MenuItem()
-                .setCategory("Combo")
+                .setCategory("Combos")
                 .setTitle("Special 3")
                 .setDescription("1 Large pizza+6 chicken wings+ 1 drink")
                 .setPrice(20.99)
