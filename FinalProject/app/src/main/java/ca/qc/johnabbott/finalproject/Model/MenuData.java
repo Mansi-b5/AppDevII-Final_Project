@@ -59,7 +59,7 @@ public class MenuData {
 
         pizza.add(new MenuItem()
                 .setCategory("Pizza")
-                .setTitle("All Dressed")
+                .setTitle("Chicken BBQ")
                 .setSize(null)
                 .setDescription("A topping of spicy barbeque sauce, diced chicken, cilantro, peppers, and onions")
                 .setPrice(10.99));
