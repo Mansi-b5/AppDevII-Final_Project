@@ -15,7 +15,6 @@ public class Order implements Identifiable<Long> {
     private List<CartItem> cartItemList;
     private OrderStatus status;
     private Date orderDate;
-
     private LocationD location;
 
     public Order() {
@@ -38,11 +37,6 @@ public class Order implements Identifiable<Long> {
         this.id = id;
         return this;
     }
-
-//    public Order setId(int id) {
-//        this.id = id;
-//        return this;
-//    }
 
 
     public Date getOrderDate() {
