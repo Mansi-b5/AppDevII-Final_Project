@@ -184,7 +184,7 @@ public class MenuData {
         combos.add(new MenuItem()
                 .setCategory("Combos")
                 .setTitle("Special 2")
-                .setDescription("Buy 1 large pizza, get small free")
+                .setDescription("Buy 1 large pizza + get small pizza for free")
                 .setPrice(17.99)
                 .setImageResourceId(R.drawable.secondcombo));
         combos.add(new MenuItem()
