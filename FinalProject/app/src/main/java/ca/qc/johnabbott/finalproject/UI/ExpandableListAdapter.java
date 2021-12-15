@@ -137,7 +137,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         ImageButton addToCart = view.findViewById(R.id.addToCartImageButton);
         addToCart.setOnClickListener(view1 -> {
             MainActivity activity = (MainActivity) menuCategoryFragment.getActivity();
-            menuItem.setImageResourceId(R.drawable.cart_placeholder_image);
+            /*menuItem.setImageResourceId(R.drawable.cart_placeholder_image);*/
             List<CartItem> currentCartItems = activity.getOrderViewModel().getOrder().getCartItemList();
             String snackBarText = "";
 
