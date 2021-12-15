@@ -20,6 +20,7 @@ public class CartItemSampleData {
                         .setSize(null)
                         .setDescription("Topped with a mix of mozzarella, provolone and parmesan.")
                         .setPrice(10.99)
+                        .setQuantity(1)
                         .setImageResourceId(R.drawable.cart_placeholder_image)
                 )
                 .setQuantity(3)

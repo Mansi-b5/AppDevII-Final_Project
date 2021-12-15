@@ -8,6 +8,7 @@ public class MenuItem implements Identifiable<Long> {
     private String category;
     private String title;
     private String description;
+    private int quantity;
     private double price;
     private Size size;
     private int imageResourceId;
@@ -77,6 +78,16 @@ public class MenuItem implements Identifiable<Long> {
         this.size = size;
         return this;
     }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public MenuItem setQuantity(int quantity) {
+        this.quantity = quantity;
+        return this;
+    }
+
 
     public int getImageResourceId() {
         return imageResourceId;

@@ -10,8 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 
-import com.airbnb.lottie.L;
-
 import ca.qc.johnabbott.finalproject.Model.DBHandler;
 import ca.qc.johnabbott.finalproject.Model.MenuItem;
 import ca.qc.johnabbott.finalproject.Model.MenuData;
