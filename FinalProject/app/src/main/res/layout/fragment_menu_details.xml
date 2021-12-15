@@ -7,43 +7,44 @@
     android:layout_height="match_parent"
     tools:context=".UI.MenuDetails">
 
+
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="4dp"
         android:text="Pizza"
         android:textSize="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.525"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></TextView>
-
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="320dp"
         android:layout_height="220dp"
-        android:layout_marginTop="141dp"
+        android:layout_marginTop="24dp"
         android:adjustViewBounds="true"
         android:background="@drawable/border_imageview"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="300dp"
         android:layout_height="200dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="32dp"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <TextView
         android:id="@+id/description"
@@ -59,7 +60,7 @@
 
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/size_linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="25dp"
         android:layout_marginStart="32dp"
@@ -85,17 +86,18 @@
             android:scrollbarSize="50dp"></Spinner>
     </LinearLayout>
 
+
     <TextView
         android:id="@+id/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:text="Price"
         android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/confirmOrderButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"></TextView>
-
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -106,7 +108,7 @@
         android:layout_marginEnd="82dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+        app:layout_constraintTop_toBottomOf="@+id/size_linearLayout">
 
         <TextView
             android:id="@+id/quantity"
@@ -156,12 +158,13 @@
         android:id="@+id/confirmOrderButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="52dp"
+        android:layout_marginTop="4dp"
         android:backgroundTint="@color/black"
         android:text="Add to cart"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/price" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

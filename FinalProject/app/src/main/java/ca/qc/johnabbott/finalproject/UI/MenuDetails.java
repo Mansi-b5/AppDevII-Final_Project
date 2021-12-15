@@ -11,11 +11,15 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.ArrayList;
+import java.util.List;
 
 import ca.qc.johnabbott.finalproject.CartItemRecyclerViewAdapter;
 import ca.qc.johnabbott.finalproject.Model.CartItem;
 import ca.qc.johnabbott.finalproject.Model.MenuData;
+import ca.qc.johnabbott.finalproject.Model.MenuItem;
 import ca.qc.johnabbott.finalproject.Model.Size;
 import ca.qc.johnabbott.finalproject.R;
 import ca.qc.johnabbott.finalproject.databinding.FragmentMenuDetailsBinding;
@@ -25,11 +29,16 @@ import ca.qc.johnabbott.finalproject.viewmodel.OrderViewModel;
 public class MenuDetails extends Fragment {
 
     private FragmentMenuDetailsBinding binding;
+    private MenuItem menuItem;
 
     public MenuDetails() {
 
     }
 
+
+    public void setMenuItem(MenuItem menuItem) {
+        this.menuItem = menuItem;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,10 +60,56 @@ public class MenuDetails extends Fragment {
 
 
         binding.title.setText(mainActivity.getOrderViewModel().getItem().getTitle());
-        //binding.quantityTextView.setText(mainActivity.getOrderViewModel().getItem().getQuantity());
+//        mainActivity.getOrderViewModel().getItem().setQuantity(1);
+//        binding.quantityTextView.setText(mainActivity.getOrderViewModel().getItem().getQuantity());
         binding.imageView.setImageResource(mainActivity.getOrderViewModel().getItem().getImageResourceId());
         binding.description.setText(mainActivity.getOrderViewModel().getItem().getDescription());
-        //binding.quantityTextView.setText(mainActivity.getOrderViewModel().getItem().getQuantity());
+
+        if(mainActivity.getOrderViewModel().getItem().getCategory().equals("Pizza"))
+        {
+            binding.sizeLinearLayout.setVisibility(View.VISIBLE);
+        }
+        else
+            binding.sizeLinearLayout.setVisibility(View.GONE);
+
+        binding.confirmOrderButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                MainActivity activity = (MainActivity) getActivity();
+                menuItem.setImageResourceId(R.drawable.cart_placeholder_image);
+                List<CartItem> currentCartItems = activity.getOrderViewModel().getOrder().getCartItemList();
+                String snackBarText = "";
+
+                CartItem cartItem = currentCartItems.stream().filter(ci -> ci.getMenuItem().getTitle().equals(menuItem.getTitle())).findFirst().orElse(null);
+
+                // create new cart item else plus one the quantity of the existing cartItem
+                if(cartItem == null) {
+                    currentCartItems.add(new CartItem()
+                            .setMenuItem(menuItem)
+                            .setQuantity(1)
+                            .setUnitPrice(menuItem.getPrice()));
+
+                    snackBarText = "Added " + menuItem.getTitle() + " to the cart.";
+                } else {
+                    int quantity = cartItem.getQuantity();
+                    cartItem.setQuantity(++quantity);
+
+                    snackBarText = "Added one more " + menuItem.getTitle() + " to the cart.";
+                }
+
+                Snackbar.make(getView(), snackBarText, Snackbar.LENGTH_SHORT)
+                        .setAction("VIEW CART", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view1) {
+                                activity.setter(R.id.ic_cart);
+                            }
+                        })
+                        .show();
+            }
+        });
+
+
 
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

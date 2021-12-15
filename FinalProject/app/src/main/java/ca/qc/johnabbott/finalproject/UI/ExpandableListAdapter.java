@@ -1,10 +1,12 @@
 package ca.qc.johnabbott.finalproject.UI;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -78,11 +80,15 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.fragment_menu_group,viewGroup,false);
         }
 
+
+
+
         TextView textView = view.findViewById(R.id.expandedListGroup);
         LinearLayout linearLayout = view.findViewById(R.id.cardViewColor);
         ImageView imageView = view.findViewById(R.id.image);
 
         String header = listHeader.get(groupPos);
+
         textView.setText(header);
 
         switch (header) {
