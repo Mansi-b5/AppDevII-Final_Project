@@ -4,19 +4,26 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 
+import com.airbnb.lottie.L;
+
+import ca.qc.johnabbott.finalproject.Model.DBHandler;
 import ca.qc.johnabbott.finalproject.Model.MenuItem;
 import ca.qc.johnabbott.finalproject.Model.MenuData;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import ca.qc.johnabbott.finalproject.R;
+import ca.qc.johnabbott.finalproject.sqlite.DatabaseException;
 
 
 public class MenuCategoryFragment extends Fragment {
@@ -24,6 +31,7 @@ public class MenuCategoryFragment extends Fragment {
     List<String> listHeader;
     HashMap<String,List<MenuItem>> items;
     ExpandableListView expandableListView;
+    private DBHandler dbHandler;
 
     public MenuCategoryFragment() {
         // Required empty public constructor
@@ -32,6 +40,7 @@ public class MenuCategoryFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        dbHandler = ((MainActivity)getActivity()).getDBhandler();
 
     }
 
@@ -48,11 +57,26 @@ public class MenuCategoryFragment extends Fragment {
         super.onViewCreated(view,savedInstanceState);
 
         expandableListView = view.findViewById(R.id.expandableListView);
-        items = MenuData.getData();
-        listHeader = new ArrayList<String>(items.keySet());
-        expandableListView.setAdapter(new ExpandableListAdapter(listHeader, items, this));
-        expandableListView.setGroupIndicator(null);
+        try {
+            List<MenuItem> list = dbHandler.getMenuItemTable().readAll();
+            items = groupByHashMap(list);
+            listHeader = new ArrayList<>(items.keySet());
+            expandableListView.setAdapter(new ExpandableListAdapter(listHeader, items, this));
+            expandableListView.setGroupIndicator(null);
+        } catch (DatabaseException e) {
+            e.printStackTrace();
+        }
+    }
+    private HashMap<String, List<MenuItem>> groupByHashMap(List<MenuItem> items)
+    {
+        HashMap<String, List<MenuItem>> hashMap = new HashMap<>();
+        for(MenuItem menuItem: items){
+            if(!hashMap.containsKey(menuItem.getCategory())){
+                hashMap.put(menuItem.getCategory(), new ArrayList<MenuItem>());
+            }
+            hashMap.get(menuItem.getCategory()).add(menuItem);
+        }
 
-
+        return hashMap;
     }
 }

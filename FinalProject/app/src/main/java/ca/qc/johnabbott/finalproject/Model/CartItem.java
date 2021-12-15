@@ -2,42 +2,52 @@ package ca.qc.johnabbott.finalproject.Model;
 
 import java.util.UUID;
 
-public class CartItem {
+import ca.qc.johnabbott.finalproject.sqlite.Identifiable;
+
+public class CartItem implements Identifiable<Long> {
 
     // generate local IDs (in memory only).
     private static int CURRENT_LOCAL_ID = 0;
 
-    private int id;
-    private MenuItem product;
+    private long id;
+    private MenuItem menuItem;
     private int Quantity;
     private double UnitPrice;
+    private long menuItemId;
+    private long CartId;
 
     public CartItem() {
         id = CURRENT_LOCAL_ID++;
     }
 
-    public CartItem(int id, MenuItem product, int quantity, double unitPrice) {
+    public CartItem(int id, MenuItem menuItem, int quantity, double unitPrice) {
         this.id = id;
-        this.product = product;
+        this.menuItem = menuItem;
         Quantity = quantity;
         UnitPrice = unitPrice;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public CartItem setId(int id) {
+    @Override
+    public CartItem setId(Long id) {
         this.id = id;
         return this;
     }
 
-    public MenuItem getProduct() {
-        return product;
+//    public CartItem setId(long id) {
+//        this.id = id;
+//        return this;
+//    }
+
+    public MenuItem getMenuItem() {
+        return menuItem;
     }
 
-    public CartItem setProduct(MenuItem product) {
-        this.product = product;
+    public CartItem setMenuItem(MenuItem product) {
+        this.menuItem = product;
         return this;
     }
 
@@ -56,6 +66,24 @@ public class CartItem {
 
     public CartItem setUnitPrice(double unitPrice) {
         UnitPrice = unitPrice;
+        return this;
+    }
+
+    public long getCartId() {
+        return CartId;
+    }
+
+    public CartItem setCartId(long cartId) {
+        CartId = cartId;
+        return this;
+    }
+
+    public long getMenuItemId() {
+        return menuItemId;
+    }
+
+    public CartItem setMenuItemId(long menuItemId) {
+        this.menuItemId = menuItemId;
         return this;
     }
 }

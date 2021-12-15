@@ -3,6 +3,7 @@ package ca.qc.johnabbott.finalproject.UI;
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -21,18 +22,18 @@ import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageClickListener;
 import com.synnapps.carouselview.ImageListener;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import ca.qc.johnabbott.finalproject.Model.MenuData;
+import ca.qc.johnabbott.finalproject.Model.MenuItem;
 import ca.qc.johnabbott.finalproject.R;
 import ca.qc.johnabbott.finalproject.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
-    private AlertDialog.Builder dialogBuilder;
-    private AlertDialog dialog;
-    private TextView combo, price;
-    private Button close;
-
-
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -47,13 +48,12 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        int[] sampleImages = {R.drawable.pizza,R.drawable.pizza,R.drawable.pizza};
-
+        List<MenuItem> menuDataComboList = MenuData.getData().get("Combo");
 
         binding.carouselView.setImageListener(new ImageListener() {
             @Override
             public void setImageForPosition(int position, ImageView imageView) {
-                imageView.setImageResource(sampleImages[position]);
+                imageView.setImageResource(menuDataComboList.get(position).getImageResourceId());
             }
 
         });
@@ -61,38 +61,25 @@ public class HomeFragment extends Fragment {
            @Override
            public void onClick(int position) {
                PopupDealsFragment popupDealsFragment = new PopupDealsFragment();
-               switch (position)
-               {
-                   case 0:
-                       popupDealsFragment.set_combo("2 large pizzas and 2 drinks of your choice");
-                       popupDealsFragment.set_price("$25.99");
 
-                       break;
-                   case 1:
-                       popupDealsFragment.set_combo("Buy 1 large, get small free");
-                       popupDealsFragment.set_price("$17.99");
-                       break;
-                   case 2:
-                       popupDealsFragment.set_combo("1 Large pizza, chicken wings and a drink of your choice");
-                       popupDealsFragment.set_price("$20.99");
-                       break;
 
-               }
-               popupDealsFragment.show(getFragmentManager(), "test");
+               popupDealsFragment.setMenuItem(menuDataComboList.get(position));
+               popupDealsFragment.setHomeFragment(fragment());
+               popupDealsFragment.show(getActivity().getSupportFragmentManager(), "deals");
 
            }
        });
-        binding.carouselView.setPageCount(sampleImages.length);
+        binding.carouselView.setPageCount(menuDataComboList.size());
+
+        binding.pizzaImageview.setOnClickListener(pizzaImageView -> ((MainActivity) getActivity()).setter(R.id.ic_menu));
+        binding.drinksImageview.setOnClickListener(drinksImageview -> ((MainActivity) getActivity()).setter(R.id.ic_menu));
+        binding.sidesImageview.setOnClickListener(sidesImageview -> ((MainActivity) getActivity()).setter(R.id.ic_menu));
 
 
     }
-
-    public void popUpDealsOnClick()
+    private HomeFragment fragment()
     {
-
-        dialogBuilder = new AlertDialog.Builder(getContext());
-        View popUpWindow = getLayoutInflater().inflate(R.layout.fragment_popupdealswindow,null);
-
+        return this;
     }
 
     @Override

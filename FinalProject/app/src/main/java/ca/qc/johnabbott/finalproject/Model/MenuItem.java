@@ -1,8 +1,10 @@
 package ca.qc.johnabbott.finalproject.Model;
 
-public class MenuItem {
+import ca.qc.johnabbott.finalproject.sqlite.Identifiable;
 
-    private int id;
+public class MenuItem implements Identifiable<Long> {
+
+    private Long id;
     private String category;
     private String title;
     private String description;
@@ -13,16 +15,16 @@ public class MenuItem {
     public MenuItem()
     {
     }
-    public MenuItem(int id)
+    public MenuItem(Long id)
     {
         this.id = id;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public MenuItem setId(int id) {
+    public MenuItem setId(Long id) {
         this.id = id;
         return this;
     }

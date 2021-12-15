@@ -12,16 +12,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import ca.qc.johnabbott.finalproject.Model.Location;
-import ca.qc.johnabbott.finalproject.UI.MainActivity;
+import ca.qc.johnabbott.finalproject.Model.LocationD;
 import ca.qc.johnabbott.finalproject.databinding.ListItemLocationBinding;
 
 public class LocationListAdapter extends RecyclerView.Adapter<LocationListAdapter.ViewHolder> {
 
     private final Context context;
-    private List<Location> data;
+    private List<LocationD> data;
 
-    public LocationListAdapter(Context context, List<Location> data) {
+    public LocationListAdapter(Context context, List<LocationD> data) {
         this.context = context;
         this.data = data;
     }
@@ -46,30 +45,31 @@ public class LocationListAdapter extends RecyclerView.Adapter<LocationListAdapte
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         private final ListItemLocationBinding binding;
-        private Location location;
+        private LocationD location;
 
         public ViewHolder(@NonNull ListItemLocationBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
 
-        public void bind(Location location){
+        public void bind(LocationD location){
             this.location = location;
 
+            binding.name.setText(location.getName());
             binding.address.setText(location.getAddress());
             binding.hours.setText(location.getHours());
             binding.phone.setText(location.getPhoneNumber());
 
-            binding.locationImage.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    String uri = "https://goo.gl/maps/P9CxKRDoxcwVZ4rWA";
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-                    intent.setPackage("com.google.android.apps.maps");
-
-                    context.startActivity(intent);
-                }
-            });
+//            binding.locationImage.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    String uri = "https://goo.gl/maps/P9CxKRDoxcwVZ4rWA";
+//                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+//                    intent.setPackage("com.google.android.apps.maps");
+//
+//                    context.startActivity(intent);
+//                }
+//            });
 
             binding.phone.setOnClickListener(new View.OnClickListener() {
                 @Override

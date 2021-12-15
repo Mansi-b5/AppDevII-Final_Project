@@ -14,7 +14,7 @@ public class CartItemSampleData {
         data = new ArrayList<>();
 
         data.add(new CartItem()
-                .setProduct(new MenuItem()
+                .setMenuItem(new MenuItem()
                         .setCategory("Pizza")
                         .setTitle("Cheese")
                         .setSize(null)
@@ -26,7 +26,7 @@ public class CartItemSampleData {
                 .setUnitPrice(10.99));
 
         data.add(new CartItem()
-                .setProduct(new MenuItem()
+                .setMenuItem(new MenuItem()
                         .setCategory("Sides")
                         .setTitle("Wings")
                         .setSize(null)
@@ -38,7 +38,7 @@ public class CartItemSampleData {
                 .setUnitPrice(9.99));
 
         data.add(new CartItem()
-                .setProduct(new MenuItem()
+                .setMenuItem(new MenuItem()
                         .setCategory("Drinks")
                         .setTitle("Coke")
                         .setSize(null)

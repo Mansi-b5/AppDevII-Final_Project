@@ -82,22 +82,27 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         LinearLayout linearLayout = view.findViewById(R.id.cardViewColor);
         ImageView imageView = view.findViewById(R.id.image);
 
-        if(listHeader.get(groupPos) == "Pizza")
-        {
-            textView.setText(String.valueOf(getGroup(groupPos)));
-            linearLayout.setBackgroundResource(R.drawable.gradient1);
-            imageView.setBackgroundResource(R.drawable.ic_baseline_local_pizza_24);
-        }
-        else if(listHeader.get(groupPos) == "Sides")
-        {
-            textView.setText(String.valueOf(getGroup(groupPos)));
-            linearLayout.setBackgroundResource(R.drawable.gradient2);
-            imageView.setBackgroundResource(R.drawable.ic_baseline_fastfood_24);
-        }
-        else if(listHeader.get(groupPos) == "Drinks"){
-            textView.setText(String.valueOf(getGroup(groupPos)));
-            linearLayout.setBackgroundResource(R.drawable.gradient3);
-            imageView.setBackgroundResource(R.drawable.ic_baseline_local_drink_24);
+        String header = listHeader.get(groupPos);
+        textView.setText(header);
+
+        switch (header) {
+            case "Pizza":
+                linearLayout.setBackgroundResource(R.drawable.gradient1);
+                imageView.setBackgroundResource(R.drawable.ic_baseline_local_pizza_24);
+                break;
+            case "Sides":
+                linearLayout.setBackgroundResource(R.drawable.gradient2);
+                imageView.setBackgroundResource(R.drawable.ic_baseline_fastfood_24);
+                break;
+            case "Drinks":
+                linearLayout.setBackgroundResource(R.drawable.gradient3);
+                imageView.setBackgroundResource(R.drawable.ic_baseline_local_drink_24);
+                break;
+            case "Combos":
+                //todo mantis change this
+                linearLayout.setBackgroundResource(R.drawable.gradient3);
+                imageView.setBackgroundResource(R.drawable.ic_baseline_local_drink_24);
+                break;
         }
 
         return view;
@@ -130,16 +135,17 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
         ImageButton addToCart = view.findViewById(R.id.addToCartImageButton);
         addToCart.setOnClickListener(view1 -> {
-            menuItem.setImageResourceId(R.drawable.cart_placeholder_image);
+            MainActivity activity = (MainActivity) menuCategoryFragment.getActivity();
+            /*menuItem.setImageResourceId(R.drawable.cart_placeholder_image);*/
             List<CartItem> currentCartItems = activity.getOrderViewModel().getOrder().getCartItemList();
             String snackBarText = "";
 
-            CartItem cartItem = currentCartItems.stream().filter(ci -> ci.getProduct().getTitle().equals(menuItem.getTitle())).findFirst().orElse(null);
+            CartItem cartItem = currentCartItems.stream().filter(ci -> ci.getMenuItem().getTitle().equals(menuItem.getTitle())).findFirst().orElse(null);
 
             // create new cart item else plus one the quantity of the existing cartItem
             if(cartItem == null) {
                 currentCartItems.add(new CartItem()
-                        .setProduct(menuItem)
+                        .setMenuItem(menuItem)
                         .setQuantity(1)
                         .setUnitPrice(menuItem.getPrice()));
 
@@ -155,8 +161,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                     .setAction("VIEW CART", new View.OnClickListener() {
                         @Override
                         public void onClick(View view1) {
-                            Fragment fragment = new CartItemListFragment();
-                            menuCategoryFragment.getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main,fragment).commit();
+                            ((MainActivity) menuCategoryFragment.getActivity()).setter(R.id.ic_cart);
                         }
                     })
                     .show();

@@ -4,43 +4,40 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
-import com.synnapps.carouselview.ImageClickListener;
-import com.synnapps.carouselview.ImageListener;
+import com.google.android.material.snackbar.Snackbar;
 
+import java.util.List;
+
+import ca.qc.johnabbott.finalproject.CartItemListFragment;
+import ca.qc.johnabbott.finalproject.Model.CartItem;
+import ca.qc.johnabbott.finalproject.Model.MenuItem;
 import ca.qc.johnabbott.finalproject.R;
-import ca.qc.johnabbott.finalproject.databinding.FragmentHomeBinding;
 import ca.qc.johnabbott.finalproject.databinding.FragmentPopupdealswindowBinding;
 
 public class PopupDealsFragment extends DialogFragment {
 
-    private String _combo;
-    private String _price;
+
     private FragmentPopupdealswindowBinding binding;
+    private MenuItem menuItem;
+    private HomeFragment homeFragment;
 
-
-
-    public String get_combo() {
-        return _combo;
+    public void setMenuItem(MenuItem menuItem) {
+        this.menuItem = menuItem;
     }
 
-    public void set_combo(String _combo) {
-        this._combo = _combo;
+    public HomeFragment getFragment()
+    {
+        return this.homeFragment;
     }
-
-    public String get_price() {
-        return _price;
+    public void setHomeFragment(HomeFragment homeFragment)
+    {
+        this.homeFragment = homeFragment;
     }
-
-    public void set_price(String _price) {
-        this._price = _price;
-    }
-
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -53,9 +50,60 @@ public class PopupDealsFragment extends DialogFragment {
     }
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.comboNameTextview.setText(get_combo());
-        binding.priceOfComboTextview.setText(get_price());
+        binding.comboNameTextview.setText(menuItem.getDescription());
+        binding.priceOfComboTextview.setText(String.valueOf(menuItem.getPrice()));
+        binding.dealsImageView.setImageResource(menuItem.getImageResourceId());
+
+        binding.addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainActivity activity = (MainActivity) getActivity();
+                menuItem.setImageResourceId(R.drawable.cart_placeholder_image);
+                List<CartItem> currentCartItems = activity.getOrderViewModel().getOrder().getCartItemList();
+                String snackBarText = "";
+
+                CartItem cartItem = currentCartItems.stream().filter(ci -> ci.getMenuItem().getTitle().equals(menuItem.getTitle())).findFirst().orElse(null);
+
+                // create new cart item else plus one the quantity of the existing cartItem
+                if(cartItem == null) {
+                    currentCartItems.add(new CartItem()
+                            .setMenuItem(menuItem)
+                            .setQuantity(1)
+                            .setUnitPrice(menuItem.getPrice()));
+
+                    snackBarText = "Added " + menuItem.getTitle() + " to the cart.";
+                } else {
+                    int quantity = cartItem.getQuantity();
+                    cartItem.setQuantity(++quantity);
+
+                    snackBarText = "Added one more " + menuItem.getTitle() + " to the cart.";
+                }
+
+                Snackbar.make(getFragment().getView(), snackBarText, Snackbar.LENGTH_SHORT)
+                        .setAction("VIEW CART", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view1) {
+                                Fragment fragment = new CartItemListFragment();
+                                getFragment().getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main,fragment).commit();
+                            }
+                        })
+                        .show();
+            }
+        });
+        binding.cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                closeWindow();
+
+            }
+        });
     }
+    private void closeWindow()
+    {
+        this.dismiss();
+    }
+
 
 
     @Override

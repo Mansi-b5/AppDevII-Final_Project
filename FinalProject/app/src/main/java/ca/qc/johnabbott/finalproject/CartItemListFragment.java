@@ -70,6 +70,10 @@ public class CartItemListFragment extends Fragment {
 
         binding = FragmentCartItemListBinding.inflate(inflater, container, false);
 
+        if(((MainActivity) getActivity()).getOrderViewModel().getOrder().getLocation() != null){
+            binding.orderInfoTextView.setText(((MainActivity) getActivity()).getOrderViewModel().getOrder().getLocation().getName());
+        }
+
         // Set the adapter
         Context context = getContext();
         if (mColumnCount <= 1) {
@@ -82,6 +86,15 @@ public class CartItemListFragment extends Fragment {
 
         populateTotalPriceTable();
 
+        //todo maybe have a isEmpty
+        if(((MainActivity) getActivity()).getOrderViewModel().getOrder().isEmpty())
+            binding.checkoutButton.setVisibility(View.INVISIBLE);
+
+        binding.checkoutButton.setOnClickListener(view -> {
+
+            Fragment fragment = new CheckoutFragment();
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main,fragment).commit();
+        });
 
         return binding.getRoot();
     }
