@@ -1,5 +1,6 @@
 package ca.qc.johnabbott.finalproject;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 
@@ -85,8 +87,13 @@ public class CheckoutFragment extends Fragment {
             }
         });
 
+        binding.pickupRadioButton.setChecked(true);
 
         binding.confirmOrderButton.setOnClickListener(view1 -> {
+            if(!isFormFilled()) {
+                return;
+            }
+
             order.setOrderDate(new Date());
             order.setStatus(OrderStatus.PENDING);
             MainActivity mainActivity = (MainActivity) getActivity();
@@ -104,6 +111,27 @@ public class CheckoutFragment extends Fragment {
                 e.printStackTrace();
             }
         });
+    }
+
+    private boolean isFormFilled() {
+        String name = binding.nameEditText.getText().toString();
+        String phoneNumber = binding.phoneTextView.getText().toString();
+        String address = binding.addressEditText.getText().toString();
+
+        boolean nameFilled = isFormSectionFilled(name, binding.nameEditText);
+        boolean phoneNumberFilled = isFormSectionFilled(phoneNumber, binding.phoneEditText);
+        boolean addressFilled = isFormSectionFilled(address, binding.addressEditText);
+
+        return nameFilled && phoneNumberFilled && addressFilled;
+    }
+
+    private boolean isFormSectionFilled(String input, EditText editText) {
+        if(input != null && input.trim().isEmpty()) {
+            editText.setHint("please fill up this section");
+            editText.setHintTextColor(Color.RED);
+            return false;
+        }
+        return true;
     }
 
     @Override

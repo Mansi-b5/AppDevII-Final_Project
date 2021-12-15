@@ -16,7 +16,6 @@ public class Order implements Identifiable<Long> {
     private OrderStatus status;
     private Date orderDate;
     private LocationD location;
-    private String locationName;
 
     public Order() {
         id = CURRENT_LOCAL_ID++;
@@ -77,15 +76,6 @@ public class Order implements Identifiable<Long> {
 
     public Order setLocation(LocationD location) {
         this.location = location;
-        return this;
-    }
-
-    public String getLocationName() {
-        return locationName;
-    }
-
-    public Order setLocationName(String locationName) {
-        this.locationName = locationName;
         return this;
     }
 }
