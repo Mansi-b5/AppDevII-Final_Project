@@ -1,12 +1,17 @@
 package ca.qc.johnabbott.finalproject;
 
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 
+import android.provider.AlarmClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +22,7 @@ import android.widget.Spinner;
 
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -39,6 +45,7 @@ public class CheckoutFragment extends Fragment {
 
     private Spinner spinner;
     private SpinAdapter spinAdapter;
+    private int  currentNotificationId = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -79,9 +86,11 @@ public class CheckoutFragment extends Fragment {
                 switch (checkedId) {
                     case R.id.deliveryRadioButton:
                         binding.deliveryWarningTextView.setVisibility(View.VISIBLE);
+                        binding.alarmSwitch.setVisibility(View.GONE);
                         break;
                     case R.id.pickupRadioButton:
                         binding.deliveryWarningTextView.setVisibility(View.GONE);
+                        binding.alarmSwitch.setVisibility(View.VISIBLE);
                         break;
                 }
             }
@@ -98,6 +107,11 @@ public class CheckoutFragment extends Fragment {
             order.setStatus(OrderStatus.PENDING);
             MainActivity mainActivity = (MainActivity) getActivity();
             try {
+                NotificationThread noti = new NotificationThread();
+                noti.setActivity(activity);
+                Thread thread = new Thread(noti);
+                thread.start();
+
                 long cartId = mainActivity.getDBhandler().getOrderTable().create(order);
                 for (CartItem ci: order.getCartItemList()) {
                     ci.setCartId(cartId);
@@ -105,13 +119,18 @@ public class CheckoutFragment extends Fragment {
                 }
                 mainActivity.getOrderViewModel().setOrder(new Order());
                 Fragment fragment = new OrderConfirmation(cartId);
-//                mainActivity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main,fragment).commit();
                 mainActivity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main,fragment).commit();
+
+                if(binding.alarmSwitch.isChecked() && binding.pickupRadioButton.isChecked()) {
+                    setAlarm(order.getOrderDate());
+                }
             } catch (DatabaseException e) {
                 e.printStackTrace();
             }
         });
     }
+
+
 
     private boolean isFormFilled() {
         String name = binding.nameEditText.getText().toString();
@@ -132,6 +151,21 @@ public class CheckoutFragment extends Fragment {
             return false;
         }
         return true;
+    }
+
+    private void setAlarm(Date orderDate) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(orderDate);
+        calendar.add(Calendar.MINUTE, 2);
+
+        Integer hour = calendar.get(Calendar.HOUR_OF_DAY);
+        Integer minutes = calendar.get(Calendar.MINUTE);
+
+        Intent intent = new Intent(AlarmClock.ACTION_SET_ALARM);
+        intent.putExtra(AlarmClock.EXTRA_HOUR, hour);
+        intent.putExtra(AlarmClock.EXTRA_MINUTES, minutes);
+        intent.putExtra(AlarmClock.EXTRA_MESSAGE, "Pizza is going to be ready soon! Come get it!");
+        startActivity(intent);
     }
 
     @Override
