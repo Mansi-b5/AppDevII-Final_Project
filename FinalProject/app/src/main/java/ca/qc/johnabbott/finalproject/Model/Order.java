@@ -15,8 +15,8 @@ public class Order implements Identifiable<Long> {
     private List<CartItem> cartItemList;
     private OrderStatus status;
     private Date orderDate;
-
     private Location location;
+    private String locationName;
 
     public Order() {
         id = CURRENT_LOCAL_ID++;
@@ -38,11 +38,6 @@ public class Order implements Identifiable<Long> {
         this.id = id;
         return this;
     }
-
-//    public Order setId(int id) {
-//        this.id = id;
-//        return this;
-//    }
 
 
     public Date getOrderDate() {
@@ -82,6 +77,15 @@ public class Order implements Identifiable<Long> {
 
     public Order setLocation(Location location) {
         this.location = location;
+        return this;
+    }
+
+    public String getLocationName() {
+        return locationName;
+    }
+
+    public Order setLocationName(String locationName) {
+        this.locationName = locationName;
         return this;
     }
 }

@@ -20,6 +20,7 @@ public class OrderTable extends Table<Order> {
     public static final String TABLE_NAME = "Orders";
     public static final String COLUMN_TIMESTAMP = "Timestamp";
     public static final String COLUMN_STATUS = "Status";
+    public static final String COLUMN_LOCATION = "Location";
 
     public OrderTable(SQLiteOpenHelper dbh) {
         super(dbh, TABLE_NAME);
@@ -40,6 +41,7 @@ public class OrderTable extends Table<Order> {
         ContentValues values = new ContentValues();
         values.put(COLUMN_TIMESTAMP, dateFormatter.format(order.getOrderDate()));
         values.put(COLUMN_STATUS, order.getStatus().ordinal());
+        values.put(COLUMN_LOCATION, order.getLocation().getName());
 
         return values;
     }
@@ -47,14 +49,14 @@ public class OrderTable extends Table<Order> {
     @Override
     protected Order fromCursor(Cursor cursor) throws DatabaseException {
         SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd 'T' HH:mm:ss.SSSZ");
-        Order order = new Order()
-                .setId(cursor.getLong(0));
+        Order order = new Order().setId(cursor.getLong(0));
         try {
             order.setOrderDate(dateFormatter.parse(cursor.getString(1)));
         } catch (ParseException e) {
             e.printStackTrace();
         }
         order.setStatus(OrderStatus.values()[cursor.getInt(2)]);
+        order.setLocationName(cursor.getString(3));
 
         return order;
     }
