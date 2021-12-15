@@ -58,7 +58,7 @@ public class CartItemRecyclerViewAdapter extends RecyclerView.Adapter<CartItemRe
         public void bind(CartItem cartItem, int position) {
             mItem = cartItem;
             binding.imageView3.setImageResource(R.drawable.cart_placeholder_image);
-            binding.titleTextView.setText(cartItem.getProduct().getTitle());
+            binding.titleTextView.setText(cartItem.getMenuItem().getTitle());
             //binding.descriptionTextView.setText(cartItem.getProduct().getDescription());
             NumberFormat formatter = NumberFormat.getCurrencyInstance();
             binding.priceTextView.setText(formatter.format(cartItem.getUnitPrice() * cartItem.getQuantity()));

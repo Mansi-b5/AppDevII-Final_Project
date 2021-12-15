@@ -15,11 +15,15 @@ public class DBHandler extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 1;
 
     private Table<MenuItem> menuItemTable;
+    private Table<Order> orderTable;
+    private Table<CartItem> cartItemTable;
 
     public DBHandler(@Nullable Context context)
     {
         super(context,DATABASE_FILE_NAME,null,DATABASE_VERSION);
         menuItemTable = new MenuTable(this);
+        orderTable = new OrderTable(this);
+        cartItemTable = new CartItemTable(this);
 
     }
     public Table<MenuItem> getMenuItemTable()
@@ -27,10 +31,16 @@ public class DBHandler extends SQLiteOpenHelper {
         return menuItemTable;
     }
 
+    public Table<Order> getOrderTable() { return orderTable; }
+
+    public Table<CartItem> getCartItemTable() { return cartItemTable; }
+
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
         menuItemTable.createTable(sqLiteDatabase);
+        orderTable.createTable(sqLiteDatabase);
+        cartItemTable.createTable(sqLiteDatabase);
     }
 
     @Override
