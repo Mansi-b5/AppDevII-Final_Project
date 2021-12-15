@@ -11,10 +11,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 //https://stackoverflow.com/questions/1625249/android-how-to-bind-spinner-to-custom-object-list
-public class SpinAdapter extends ArrayAdapter<Location> {
-    private final Location[] values;
+public class SpinAdapter extends ArrayAdapter<LocationD> {
+    private final LocationD[] values;
 
-    public SpinAdapter(@NonNull Context context, int textViewResourceId, @NonNull Location[] values) {
+    public SpinAdapter(@NonNull Context context, int textViewResourceId, @NonNull LocationD[] values) {
         super(context, textViewResourceId, values);
         this.values = values;
     }
@@ -26,7 +26,7 @@ public class SpinAdapter extends ArrayAdapter<Location> {
 
     @Nullable
     @Override
-    public Location getItem(int position) {
+    public LocationD getItem(int position) {
         return values[position];
     }
 

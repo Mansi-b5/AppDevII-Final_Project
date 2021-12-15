@@ -52,7 +52,7 @@
     </fragment>
     <fragment
         android:id="@+id/menu_details"
-        android:name="ca.qc.johnabbott.finalproject.menuDetails"
+        android:name="ca.qc.johnabbott.finalproject.UI.MenuDetails"
         android:label="fragment_menu_details"
         tools:layout="@layout/fragment_menu_details" />
 
