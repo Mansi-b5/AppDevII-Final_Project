@@ -44,8 +44,8 @@ public class NotificationThread implements Runnable{
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(activity, MainActivity.NOTIFICATION_CHANNEL)
                 .setSmallIcon(R.drawable.logo)
-                .setContentTitle("Pizza Ready")
-                .setContentText("Pizza is ready for pickup")
+                .setContentTitle("Order Received")
+                .setContentText("Your order has been received and is being cooked now.")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 // Set the intent that will fire when the user taps the notification
                 .setContentIntent(pendingIntent)

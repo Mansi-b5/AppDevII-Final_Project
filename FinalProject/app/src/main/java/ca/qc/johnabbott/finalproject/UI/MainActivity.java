@@ -117,8 +117,8 @@ public class MainActivity extends AppCompatActivity {
         orderViewModel.setOrder(testOrder);
 
         //create a channel for our notifications.
-        String name = "Pizza Ready";
-        String description = "Notification about pizza being ready";
+        String name = "Order Ready";
+        String description = "Notification about receiving order";
         int importance = NotificationManager.IMPORTANCE_DEFAULT;
         NotificationChannel channel = new NotificationChannel(NOTIFICATION_CHANNEL, name, importance);
         channel.setDescription(description);
