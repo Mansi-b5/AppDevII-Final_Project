@@ -90,18 +90,20 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                 linearLayout.setBackgroundResource(R.drawable.gradient1);
                 imageView.setBackgroundResource(R.drawable.ic_baseline_local_pizza_24);
                 break;
-            case "Sides":
-                linearLayout.setBackgroundResource(R.drawable.gradient2);
+
+            case "Combos":
+                linearLayout.setBackgroundResource(R.drawable.gradient3);
                 imageView.setBackgroundResource(R.drawable.ic_baseline_fastfood_24);
                 break;
+
             case "Drinks":
-                linearLayout.setBackgroundResource(R.drawable.gradient3);
+                linearLayout.setBackgroundResource(R.drawable.gradient4);
                 imageView.setBackgroundResource(R.drawable.ic_baseline_local_drink_24);
                 break;
-            case "Combos":
-                //todo mantis change this
-                linearLayout.setBackgroundResource(R.drawable.gradient3);
-                imageView.setBackgroundResource(R.drawable.ic_baseline_local_drink_24);
+
+                case "Sides":
+                linearLayout.setBackgroundResource(R.drawable.gradient2);
+                imageView.setBackgroundResource(R.drawable.ic_baseline_lunch_dining_24);
                 break;
         }
 
