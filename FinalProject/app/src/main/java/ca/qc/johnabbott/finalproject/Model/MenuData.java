@@ -177,7 +177,7 @@ public class MenuData {
         combos.add(new MenuItem()
             .setCategory("Combos")
             .setTitle("Special 1")
-            .setDescription("2 large pizzas+2 drinks+fries")
+            .setDescription("2 large pizzas + 2 drinks + fries")
             .setPrice(25.99)
                 .setImageResourceId(R.drawable.firstcombo));
 
@@ -190,7 +190,7 @@ public class MenuData {
         combos.add(new MenuItem()
                 .setCategory("Combos")
                 .setTitle("Special 3")
-                .setDescription("1 Large pizza+6 chicken wings+ 1 drink")
+                .setDescription("1 Large pizza + 6 chicken wings + 1 drink")
                 .setPrice(20.99)
                 .setImageResourceId(R.drawable.thirdcombo));
 
