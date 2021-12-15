@@ -1,5 +1,7 @@
 package ca.qc.johnabbott.finalproject.UI;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -38,6 +40,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String NOTIFICATION_CHANNEL = "notification-channel";
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
     private NavigationBarView bottomNavigationView;
@@ -112,6 +115,17 @@ public class MainActivity extends AppCompatActivity {
         List<CartItem> emptyList = new ArrayList<>();
         testOrder.setCartItemList(emptyList);
         orderViewModel.setOrder(testOrder);
+
+        //create a channel for our notifications.
+        String name = "Order Ready";
+        String description = "Notification about receiving order";
+        int importance = NotificationManager.IMPORTANCE_DEFAULT;
+        NotificationChannel channel = new NotificationChannel(NOTIFICATION_CHANNEL, name, importance);
+        channel.setDescription(description);
+        // Register the channel with the system; you can't change the importance
+        // or other notification behaviors after this
+        NotificationManager notificationManager = getSystemService(NotificationManager.class);
+        notificationManager.createNotificationChannel(channel);
     }
 
     public void setter(int id) {
