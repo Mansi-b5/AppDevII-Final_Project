@@ -16,7 +16,7 @@ public class Order implements Identifiable<Long> {
     private OrderStatus status;
     private Date orderDate;
 
-    private Location location;
+    private LocationD location;
 
     public Order() {
         id = CURRENT_LOCAL_ID++;
@@ -76,11 +76,11 @@ public class Order implements Identifiable<Long> {
         return cartItemList.isEmpty();
     }
 
-    public Location getLocation() {
+    public LocationD getLocation() {
         return location;
     }
 
-    public Order setLocation(Location location) {
+    public Order setLocation(LocationD location) {
         this.location = location;
         return this;
     }

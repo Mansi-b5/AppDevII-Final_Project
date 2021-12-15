@@ -22,6 +22,7 @@ public class MenuTable extends Table<MenuItem> {
     public static final String COLUMN_DESCRIPTION = "description";
     public static final String COLUMN_PRICE = "price";
     public static final String COLUMN_SIZE = "size";
+    public static final String COLUMN_IMAGE_ID = "imageId";
 
     public  MenuTable(SQLiteOpenHelper dbh)
     {
@@ -32,6 +33,7 @@ public class MenuTable extends Table<MenuItem> {
         addColumn(new Column(COLUMN_DESCRIPTION, Column.Type.TEXT));
         addColumn(new Column(COLUMN_PRICE, Column.Type.REAL));
         addColumn(new Column(COLUMN_SIZE, Column.Type.INTEGER));
+        addColumn(new Column(COLUMN_IMAGE_ID, Column.Type.INTEGER));
     }
 
     @Override
@@ -75,6 +77,7 @@ public class MenuTable extends Table<MenuItem> {
             values.put(COLUMN_SIZE, element.getSize().ordinal());
 
         }
+        values.put(COLUMN_IMAGE_ID, element.getImageResourceId());
         return values;
 
     }
@@ -87,7 +90,9 @@ public class MenuTable extends Table<MenuItem> {
                .setTitle(cursor.getString(2))
                .setDescription(cursor.getString(3))
                .setPrice(cursor.getDouble(4))
-               .setSize(Size.values()[cursor.getInt(5)]);
+               .setSize(Size.values()[cursor.getInt(5)])
+               .setImageResourceId(cursor.getInt(6));
+
        return menuItem;
     }
 
