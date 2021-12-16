@@ -8,7 +8,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.ExpandableListView;
+import android.widget.Switch;
 
 import ca.qc.johnabbott.finalproject.Model.DBHandler;
 import ca.qc.johnabbott.finalproject.Model.MenuItem;
@@ -21,16 +23,18 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import ca.qc.johnabbott.finalproject.R;
+import ca.qc.johnabbott.finalproject.databinding.FragmentHomeBinding;
+import ca.qc.johnabbott.finalproject.databinding.FragmentMenuBinding;
 import ca.qc.johnabbott.finalproject.sqlite.DatabaseException;
 
 
 public class MenuCategoryFragment extends Fragment {
 
+    private FragmentMenuBinding binding;
     List<String> listHeader;
     HashMap<String,List<MenuItem>> items;
     ExpandableListView expandableListView;
     private DBHandler dbHandler;
-
     public MenuCategoryFragment() {
         // Required empty public constructor
     }
@@ -38,15 +42,15 @@ public class MenuCategoryFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         dbHandler = ((MainActivity)getActivity()).getDBhandler();
 
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_menu, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        binding = FragmentMenuBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 
     @Override

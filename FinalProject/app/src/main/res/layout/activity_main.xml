@@ -2,8 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parentRelative"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
     tools:context=".UI.MainActivity">
 
 
@@ -14,7 +16,7 @@
         android:background="@color/black"
         android:logo="@drawable/ic_baseline_local_pizza_24"
         android:title="@string/pizzabros"
-        android:titleTextColor="@color/white"/>
+        android:titleTextColor="@color/white"></android.widget.Toolbar>
 
 
     <androidx.fragment.app.FragmentContainerView
@@ -23,7 +25,6 @@
         android:layout_height="match_parent"
         android:layout_above="@id/bottom_navigation"
         android:layout_marginTop="56dp"
-        android:background="@drawable/background_gradient"
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graph" />
 
@@ -39,6 +40,16 @@
         app:menu="@menu/nav_menu">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="30dp"
+        android:thumb="@drawable/ic_baseline_wb_sunny_24"
+        android:thumbTint="#FFEB3B"
+        android:trackTint="#FFEB3B" />
 
 
 </RelativeLayout>

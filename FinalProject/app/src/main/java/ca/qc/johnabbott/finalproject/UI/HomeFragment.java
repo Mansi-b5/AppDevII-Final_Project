@@ -1,13 +1,19 @@
 package ca.qc.johnabbott.finalproject.UI;
 
 import android.app.AlertDialog;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,19 +41,14 @@ public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
     @Override
-    public View onCreateView(
-            LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState
-    ) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         return binding.getRoot();
-
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         List<MenuItem> menuDataComboList = MenuData.getData().get("Combo");
 
         binding.carouselView.setImageListener(new ImageListener() {
@@ -70,11 +71,9 @@ public class HomeFragment extends Fragment {
            }
        });
         binding.carouselView.setPageCount(menuDataComboList.size());
-
         binding.pizzaLinearLayout.setOnClickListener(pizzaImageView -> ((MainActivity) getActivity()).setter(R.id.ic_menu));
         binding.drinksLinearLayout.setOnClickListener(drinksImageview -> ((MainActivity) getActivity()).setter(R.id.ic_menu));
         binding.sidesLinearLayout.setOnClickListener(sidesImageview -> ((MainActivity) getActivity()).setter(R.id.ic_menu));
-
 
     }
     private HomeFragment fragment()
