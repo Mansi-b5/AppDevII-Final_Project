@@ -62,9 +62,18 @@ public class HomeFragment extends Fragment {
         });
 
         binding.carouselView.setPageCount(menuDataComboList.size());
-        binding.pizzaLinearLayout.setOnClickListener(pizzaImageView -> ((MainActivity) getActivity()).setter(R.id.ic_menu));
-        binding.drinksLinearLayout.setOnClickListener(drinksImageview -> ((MainActivity) getActivity()).setter(R.id.ic_menu));
-        binding.sidesLinearLayout.setOnClickListener(sidesImageview -> ((MainActivity) getActivity()).setter(R.id.ic_menu));
+        binding.pizzaLinearLayout.setOnClickListener(pizzaImageView -> {
+            ((MainActivity) getActivity()).setter(R.id.ic_menu);
+            ((MainActivity) getActivity()).getCategoryViewModel().setCategoryToOpen("PIZZAS");
+        });
+        binding.drinksLinearLayout.setOnClickListener(drinksImageview -> {
+            ((MainActivity) getActivity()).setter(R.id.ic_menu);
+            ((MainActivity) getActivity()).getCategoryViewModel().setCategoryToOpen("DRINKS");
+        });
+        binding.sidesLinearLayout.setOnClickListener(sidesImageview -> {
+            ((MainActivity) getActivity()).setter(R.id.ic_menu);
+            ((MainActivity) getActivity()).getCategoryViewModel().setCategoryToOpen("SIDES");
+        });
 
     }
     private HomeFragment fragment()
