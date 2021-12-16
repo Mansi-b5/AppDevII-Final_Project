@@ -4,31 +4,24 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.os.Bundle;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.util.Log;
-import android.view.View;
-
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import ca.qc.johnabbott.finalproject.CartItemListFragment;
 import ca.qc.johnabbott.finalproject.Model.CartItem;
-import ca.qc.johnabbott.finalproject.Model.CartItemSampleData;
 import ca.qc.johnabbott.finalproject.Model.DBHandler;
 import ca.qc.johnabbott.finalproject.Model.Order;
 import ca.qc.johnabbott.finalproject.R;
 import ca.qc.johnabbott.finalproject.databinding.ActivityMainBinding;
-import ca.qc.johnabbott.finalproject.sqlite.DatabaseException;
+import ca.qc.johnabbott.finalproject.viewmodel.CategoryViewModel;
 import ca.qc.johnabbott.finalproject.viewmodel.OrderViewModel;
 
 import android.view.Menu;
@@ -47,14 +40,17 @@ public class MainActivity extends AppCompatActivity {
     private DBHandler handler;
 
     private OrderViewModel orderViewModel;
+    private CategoryViewModel categoryViewModel;
 
     public MainActivity() {
         orderViewModel = new OrderViewModel();
+        categoryViewModel = new CategoryViewModel();
     }
 
     public OrderViewModel getOrderViewModel() {
         return orderViewModel;
     }
+    public CategoryViewModel getCategoryViewModel() { return categoryViewModel; }
 
     public DBHandler getDBhandler()
     {

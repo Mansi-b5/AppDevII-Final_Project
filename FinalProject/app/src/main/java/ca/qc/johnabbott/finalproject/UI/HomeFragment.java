@@ -26,11 +26,14 @@ import com.synnapps.carouselview.ImageListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 import ca.qc.johnabbott.finalproject.Model.MenuData;
 import ca.qc.johnabbott.finalproject.Model.MenuItem;
 import ca.qc.johnabbott.finalproject.R;
 import ca.qc.johnabbott.finalproject.databinding.FragmentHomeBinding;
+import ca.qc.johnabbott.finalproject.sqlite.DatabaseException;
 
 public class HomeFragment extends Fragment {
 
@@ -51,30 +54,27 @@ public class HomeFragment extends Fragment {
 
         List<MenuItem> menuDataComboList = MenuData.getData().get("Combo");
 
-        binding.carouselView.setImageListener(new ImageListener() {
-            @Override
-            public void setImageForPosition(int position, ImageView imageView) {
-                imageView.setImageResource(menuDataComboList.get(position).getImageResourceId());
-            }
+        binding.carouselView.setImageListener((position, imageView) -> imageView.setImageResource(menuDataComboList.get(position).getImageResourceId()));
 
+        binding.carouselView.setImageClickListener(position -> {
+           Fragment fragment = new MenuDetails(menuDataComboList.get(position));
+           getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main,fragment).commit();
         });
-       binding.carouselView.setImageClickListener(new ImageClickListener() {
-           @Override
-           public void onClick(int position) {
-               PopupDealsFragment popupDealsFragment = new PopupDealsFragment();
 
-
-               popupDealsFragment.setMenuItem(menuDataComboList.get(position));
-               popupDealsFragment.setHomeFragment(fragment());
-               popupDealsFragment.show(getActivity().getSupportFragmentManager(), "deals");
-
-           }
-       });
         binding.carouselView.setPageCount(menuDataComboList.size());
 
-        binding.pizzaLinearLayout.setOnClickListener(pizzaImageView -> ((MainActivity) getActivity()).setter(R.id.ic_menu));
-        binding.drinksLinearLayout.setOnClickListener(drinksImageview -> ((MainActivity) getActivity()).setter(R.id.ic_menu));
-        binding.sidesLinearLayout.setOnClickListener(sidesImageview -> ((MainActivity) getActivity()).setter(R.id.ic_menu));
+        binding.pizzaLinearLayout.setOnClickListener(pizzaImageView -> {
+            ((MainActivity) getActivity()).setter(R.id.ic_menu);
+            ((MainActivity) getActivity()).getCategoryViewModel().setCategoryToOpen("PIZZAS");
+        });
+        binding.drinksLinearLayout.setOnClickListener(drinksImageview -> {
+            ((MainActivity) getActivity()).setter(R.id.ic_menu);
+            ((MainActivity) getActivity()).getCategoryViewModel().setCategoryToOpen("DRINKS");
+        });
+        binding.sidesLinearLayout.setOnClickListener(sidesImageview -> {
+            ((MainActivity) getActivity()).setter(R.id.ic_menu);
+            ((MainActivity) getActivity()).getCategoryViewModel().setCategoryToOpen("SIDES");
+        });
 
 
     }
