@@ -12,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.text.NumberFormat;
 import java.util.List;
 
@@ -70,9 +72,7 @@ public class CartItemListFragment extends Fragment {
 
         binding = FragmentCartItemListBinding.inflate(inflater, container, false);
 
-        if(((MainActivity) getActivity()).getOrderViewModel().getOrder().getLocation() != null){
-            binding.orderInfoTextView.setText(((MainActivity) getActivity()).getOrderViewModel().getOrder().getLocation().getName());
-        }
+
 
         // Set the adapter
         Context context = getContext();
@@ -86,12 +86,14 @@ public class CartItemListFragment extends Fragment {
 
         populateTotalPriceTable();
 
-        //todo maybe have a isEmpty
-        if(((MainActivity) getActivity()).getOrderViewModel().getOrder().isEmpty())
-            binding.checkoutButton.setVisibility(View.INVISIBLE);
-
         binding.checkoutButton.setOnClickListener(view -> {
 
+            if(((MainActivity) getActivity()).getOrderViewModel().getOrder().isEmpty()) {
+                Snackbar.make(getView(), "Please add items to your cart in order to checkout", Snackbar.LENGTH_SHORT)
+                        .setAction("VIEW MENU", view1 -> ((MainActivity) getActivity()).setter(R.id.ic_menu))
+                        .show();
+                return;
+            }
             Fragment fragment = new CheckoutFragment();
             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main,fragment).commit();
         });

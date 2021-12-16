@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -71,9 +72,9 @@ public class HomeFragment extends Fragment {
        });
         binding.carouselView.setPageCount(menuDataComboList.size());
 
-        binding.pizzaImageview.setOnClickListener(pizzaImageView -> ((MainActivity) getActivity()).setter(R.id.ic_menu));
-        binding.drinksImageview.setOnClickListener(drinksImageview -> ((MainActivity) getActivity()).setter(R.id.ic_menu));
-        binding.sidesImageview.setOnClickListener(sidesImageview -> ((MainActivity) getActivity()).setter(R.id.ic_menu));
+        binding.pizzaLinearLayout.setOnClickListener(pizzaImageView -> ((MainActivity) getActivity()).setter(R.id.ic_menu));
+        binding.drinksLinearLayout.setOnClickListener(drinksImageview -> ((MainActivity) getActivity()).setter(R.id.ic_menu));
+        binding.sidesLinearLayout.setOnClickListener(sidesImageview -> ((MainActivity) getActivity()).setter(R.id.ic_menu));
 
 
     }

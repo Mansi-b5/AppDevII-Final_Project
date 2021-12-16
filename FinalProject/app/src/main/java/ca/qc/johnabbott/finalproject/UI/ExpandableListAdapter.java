@@ -1,10 +1,12 @@
 package ca.qc.johnabbott.finalproject.UI;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -20,6 +22,7 @@ import java.util.List;
 import ca.qc.johnabbott.finalproject.CartItemListFragment;
 import ca.qc.johnabbott.finalproject.Model.CartItem;
 import ca.qc.johnabbott.finalproject.Model.MenuItem;
+import ca.qc.johnabbott.finalproject.Model.Size;
 import ca.qc.johnabbott.finalproject.R;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
@@ -78,11 +81,15 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.fragment_menu_group,viewGroup,false);
         }
 
+
+
+
         TextView textView = view.findViewById(R.id.expandedListGroup);
         LinearLayout linearLayout = view.findViewById(R.id.cardViewColor);
         ImageView imageView = view.findViewById(R.id.image);
 
         String header = listHeader.get(groupPos);
+
         textView.setText(header);
 
         switch (header) {
@@ -90,18 +97,20 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                 linearLayout.setBackgroundResource(R.drawable.gradient1);
                 imageView.setBackgroundResource(R.drawable.ic_baseline_local_pizza_24);
                 break;
-            case "Sides":
-                linearLayout.setBackgroundResource(R.drawable.gradient2);
+
+            case "Combos":
+                linearLayout.setBackgroundResource(R.drawable.gradient3);
                 imageView.setBackgroundResource(R.drawable.ic_baseline_fastfood_24);
                 break;
+
             case "Drinks":
-                linearLayout.setBackgroundResource(R.drawable.gradient3);
+                linearLayout.setBackgroundResource(R.drawable.gradient4);
                 imageView.setBackgroundResource(R.drawable.ic_baseline_local_drink_24);
                 break;
-            case "Combos":
-                //todo mantis change this
-                linearLayout.setBackgroundResource(R.drawable.gradient3);
-                imageView.setBackgroundResource(R.drawable.ic_baseline_local_drink_24);
+
+                case "Sides":
+                linearLayout.setBackgroundResource(R.drawable.gradient2);
+                imageView.setBackgroundResource(R.drawable.ic_baseline_lunch_dining_24);
                 break;
         }
 
@@ -118,6 +127,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         MainActivity activity = (MainActivity) menuCategoryFragment.getActivity();
         MenuItem menuItem = items.get(listHeader.get(groupPos)).get(itemPos);
         String title = menuItem.getTitle();
+
         TextView textView = view.findViewById(R.id.textItem);
         textView.setText(title);
 
@@ -125,10 +135,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             @Override
             public void onClick(View view) {
 
-               activity.getOrderViewModel().setItem(menuItem);
-               activity.getOrderViewModel().notifyChange();
-
-                Fragment fragment = new MenuDetails();
+                Fragment fragment = new MenuDetails(menuItem);
                 menuCategoryFragment.getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main,fragment).commit();
             }
         });

@@ -51,7 +51,7 @@ public class PopupDealsFragment extends DialogFragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         binding.comboNameTextview.setText(menuItem.getDescription());
-        binding.priceOfComboTextview.setText(String.valueOf(menuItem.getPrice()));
+        binding.priceOfComboTextview.setText(String.valueOf("$"+menuItem.getPrice()));
         binding.dealsImageView.setImageResource(menuItem.getImageResourceId());
 
         binding.addButton.setOnClickListener(new View.OnClickListener() {
@@ -83,8 +83,7 @@ public class PopupDealsFragment extends DialogFragment {
                         .setAction("VIEW CART", new View.OnClickListener() {
                             @Override
                             public void onClick(View view1) {
-                                Fragment fragment = new CartItemListFragment();
-                                getFragment().getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main,fragment).commit();
+                                activity.setter(R.id.ic_cart);
                             }
                         })
                         .show();

@@ -10,9 +10,11 @@
         android:id="@+id/deals_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:text="@string/deals"
+        android:layout_marginTop="28dp"
+        android:text="DEALS"
         android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -20,7 +22,11 @@
         android:id="@+id/carouselView"
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
         app:fillColor="#FFFFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/deals_textview"
         app:pageColor="#00000000"
@@ -29,83 +35,101 @@
         app:strokeColor="#FF777777"
         app:strokeWidth="1dp" />
 
+    <TextView
+        android:id="@+id/category_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:text="CATEGORY"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/carouselView" />
+
     <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="410dp"
-        android:layout_height="120dp"
-        android:gravity="center"
-        android:orientation="horizontal"
+        android:id="@+id/pizza_linearLayout"
+        android:layout_width="120dp"
+        android:layout_height="113dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rounder_corners"
+        android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/category_textView">
 
         <ImageView
             android:id="@+id/pizza_imageview"
-            android:layout_width="wrap_content"
-            android:layout_height="98dp"
-            android:layout_marginStart="15dp"
+            android:layout_width="109dp"
+            android:layout_height="117dp"
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:src="@drawable/pizzacat" />
+            android:src="@drawable/ic_baseline_local_pizza_24" />
 
-        <ImageView
-            android:id="@+id/sides_imageview"
-            android:layout_width="250dp"
-            android:layout_height="96dp"
-            android:layout_marginStart="15dp"
-            android:layout_weight="1"
-            android:src="@drawable/dessert" />
+        <TextView
+            android:id="@+id/fries_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Pizza"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/drinks_linearLayout"
+        android:layout_width="120dp"
+        android:layout_height="113dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rounder_corners"
+        android:orientation="vertical"
+        app:layout_constraintStart_toEndOf="@+id/pizza_linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/category_textView">
 
         <ImageView
             android:id="@+id/drinks_imageview"
-            android:layout_width="wrap_content"
-            android:layout_height="98dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
+            android:layout_width="109dp"
+            android:layout_height="117dp"
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:src="@drawable/drink" />
+            android:src="@drawable/ic_baseline_local_drink_24" />
+
+        <TextView
+            android:id="@+id/drinks_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Drinks"
+            android:textSize="18sp" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/category_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="21dp"
-        android:text="@string/category"
-        android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/carouselView" />
+    <LinearLayout
+        android:id="@+id/sides_linearLayout"
+        android:layout_width="120dp"
+        android:layout_height="113dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rounder_corners"
+        android:orientation="vertical"
+        app:layout_constraintStart_toEndOf="@+id/drinks_linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/category_textView">
 
-    <TextView
-        android:id="@+id/pizza_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="12dp"
-        android:text="Pizza"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        <ImageView
+            android:id="@+id/sides_imageview"
+            android:layout_width="109dp"
+            android:layout_height="117dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:src="@drawable/ic_baseline_fastfood_24" />
 
-    <TextView
-        android:id="@+id/fries_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Sides"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/drinks_textView"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toEndOf="@+id/pizza_textView"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-    <TextView
-        android:id="@+id/drinks_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="32dp"
-        android:text="Drinks"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        <TextView
+            android:id="@+id/pizza_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Sides"
+            android:textSize="18sp" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
