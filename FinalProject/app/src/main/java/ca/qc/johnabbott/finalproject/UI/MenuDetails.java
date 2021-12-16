@@ -14,6 +14,7 @@ import android.widget.Spinner;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,6 +62,8 @@ public class MenuDetails extends Fragment {
 
         binding.title.setText(menuItem.getTitle());
 
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        binding.price.setText(formatter.format(menuItem.getPrice()));
         binding.imageView.setImageResource(menuItem.getImageResourceId());
         binding.description.setText(menuItem.getDescription());
 
@@ -97,6 +100,13 @@ public class MenuDetails extends Fragment {
                             }
                         })
                         .show();
+            }
+        });
+        binding.backToMenuBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainActivity activity = (MainActivity) getActivity();
+                activity.setter(R.id.ic_menu);
             }
         });
 

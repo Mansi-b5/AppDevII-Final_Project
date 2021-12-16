@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -69,9 +70,8 @@ public class OrderConfirmation extends Fragment {
 
 
             String orderString = "";
-            String totalString = "";
             String dateString = "";
-            dateString += "Placed order on"+orderFromDb.getOrderDate() + "\n";
+            dateString += "Placed order on: "+orderFromDb.getOrderDate() + "\n";
             double total = 0.0;
             orderString += "Items Ordered:\n";
             for (CartItem ci : orderFromDb.getCartItemList()) {
@@ -80,9 +80,9 @@ public class OrderConfirmation extends Fragment {
             }
 
 
-            totalString += total*1.15;
+            NumberFormat formatter = NumberFormat.getCurrencyInstance();
             binding.itemsDetailsTextView.setText(orderString);
-            binding.totalTextview.setText("Total: $"+totalString);
+            binding.totalTextview.setText("Total: "+formatter.format(total * 1.15));
             binding.dateTextview.setText(dateString);
         } catch (DatabaseException e) {
             e.printStackTrace();
