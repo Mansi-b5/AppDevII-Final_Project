@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -71,7 +72,10 @@ public class OrderConfirmation extends Fragment {
 
             String orderString = "";
             String dateString = "";
-            dateString += "Placed order on: "+orderFromDb.getOrderDate() + "\n";
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+            String ShortTimer = sdf.format(orderFromDb.getOrderDate());
+            dateString += "Placed order at: "+ShortTimer + "\n";
+
             double total = 0.0;
             orderString += "Items Ordered:\n";
             for (CartItem ci : orderFromDb.getCartItemList()) {
