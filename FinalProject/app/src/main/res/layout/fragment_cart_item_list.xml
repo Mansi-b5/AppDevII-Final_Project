@@ -9,6 +9,21 @@
     app:layoutManager="LinearLayoutManager"
     tools:context=".CartItemListFragment">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="CART"
+        android:textAlignment="center"
+        android:textColor="#77736c"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cartRecyclerView"
         android:layout_width="0dp"
@@ -17,13 +32,13 @@
         app:layout_constraintBottom_toTopOf="@+id/checkoutTableLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
         tools:listitem="@layout/list_item_cart_item" />
 
     <TableLayout
         android:id="@+id/checkoutTableLayout"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="64dp"
         app:layout_constraintBottom_toBottomOf="@+id/checkoutButton"
         app:layout_constraintStart_toStartOf="parent"
@@ -106,7 +121,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="64dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/teal_700"
         android:text=" Checkout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

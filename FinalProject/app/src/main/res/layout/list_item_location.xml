@@ -3,14 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginBottom="10dp">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/size_linearLayout"
-        android:layout_width="413dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,7 +16,7 @@
 
         <ImageView
             android:id="@+id/location_icon"
-            android:layout_width="117dp"
+            android:layout_width="47dp"
             android:layout_height="45dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/ic_baseline_location_on_30" />
@@ -33,19 +31,25 @@
                 android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Name" />
+                android:text="Name"
+                android:textColor="#77736c"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/address"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Address" />
+                android:text="Address"
+                android:textColor="#77736c"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/hours"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Open Hours\n   Mon:\n   Tue:\n   Wed:\n   Thurs:\n   Fri:\n" />
+                android:layout_height="178dp"
+                android:text="Open Hours\n   - Mon:\n   - Tue:\n   - Wed:\n   - Thurs:\n   - Fri:\n   - Sat:\n  - Sun:\n"
+                android:textColor="#77736c"
+                android:textSize="18sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -55,13 +59,16 @@
                 <TextView
                     android:id="@+id/phone"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="128dp"
                     android:layout_weight="1"
-                    android:text="Phone" />
+                    android:text="Phone"
+                    android:textColor="#77736c"
+                    android:textSize="18sp" />
 
             </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

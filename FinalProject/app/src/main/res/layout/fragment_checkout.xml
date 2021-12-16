@@ -7,14 +7,29 @@
     android:layout_height="match_parent"
     tools:context=".CheckoutFragment">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="CHECKOUT"
+        android:textAlignment="center"
+        android:textColor="#77736c"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TableLayout
         android:id="@+id/checkouTtableLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <TableRow
             android:id="@+id/nameRow"
@@ -29,6 +44,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:text="Name"
+                android:textColor="#77736c"
                 android:textSize="20sp" />
 
             <EditText
@@ -37,9 +53,10 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="2"
-                android:ems="10"
+                android:ems="50"
                 android:hint="your name here"
                 android:inputType="textPersonName"
+                android:textColor="#77736c"
                 tools:ignore="SpeakableTextPresentCheck" />
         </TableRow>
 
@@ -56,6 +73,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:text="Phone Number"
+                android:textColor="#77736c"
                 android:textSize="20sp" />
 
             <EditText
@@ -67,6 +85,7 @@
                 android:ems="10"
                 android:hint="your phone # here"
                 android:inputType="phone"
+                android:textColor="#77736c"
                 tools:ignore="SpeakableTextPresentCheck" />
         </TableRow>
 
@@ -83,6 +102,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:text="Address"
+                android:textColor="#77736c"
                 android:textSize="20sp" />
 
             <EditText
@@ -94,6 +114,7 @@
                 android:ems="10"
                 android:hint="your address here"
                 android:inputType="textShortMessage|textLongMessage|text"
+                android:textColor="#77736c"
                 tools:ignore="SpeakableTextPresentCheck" />
 
         </TableRow>
@@ -111,6 +132,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:text="Email"
+                android:textColor="#77736c"
                 android:textSize="20sp" />
 
             <EditText
@@ -122,6 +144,7 @@
                 android:ems="10"
                 android:hint="your email here"
                 android:inputType="textEmailAddress"
+                android:textColor="#77736c"
                 tools:ignore="SpeakableTextPresentCheck" />
         </TableRow>
 
@@ -138,6 +161,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:text="Location"
+                android:textColor="#77736c"
                 android:textSize="20sp" />
 
             <Spinner
@@ -162,6 +186,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:text="Setting"
+                android:textColor="#77736c"
                 android:textSize="20sp" />
 
             <RadioGroup
@@ -170,21 +195,24 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="2"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:textColor="#77736c">
 
                 <RadioButton
                     android:id="@+id/pickupRadioButton"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
-                    android:text="Pickup" />
+                    android:text="Pickup"
+                    android:textColor="#77736c" />
 
                 <RadioButton
                     android:id="@+id/deliveryRadioButton"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
-                    android:text="Delivery" />
+                    android:text="Delivery"
+                    android:textColor="#77736c" />
             </RadioGroup>
         </TableRow>
 
@@ -197,7 +225,8 @@
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="#77736c" />
 
             <Switch
                 android:id="@+id/alarmSwitch"
@@ -215,7 +244,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="36dp"
-        android:backgroundTint="#000000"
+        android:backgroundTint="#009688"
         android:text="Confirm order"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/warningTextView" />

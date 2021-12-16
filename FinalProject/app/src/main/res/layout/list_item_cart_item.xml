@@ -24,6 +24,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:text="Price"
+        android:textColor="#77736c"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/titleTextView"
         app:layout_constraintTop_toTopOf="parent" />
@@ -34,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/teal_700"
         android:text="Details"
         app:layout_constraintEnd_toStartOf="@+id/removeButton"
         app:layout_constraintTop_toBottomOf="@+id/quantityTextView" />
@@ -44,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/teal_700"
         android:text="Remove"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/details_Button" />
@@ -56,6 +57,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
         android:text="Quantity:"
+        android:textColor="#77736c"
         app:layout_constraintStart_toEndOf="@+id/imageView3"
         app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
 
@@ -66,6 +68,8 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:text="Title"
+        android:textStyle="bold"
+        android:textColor="#77736c"
         app:layout_constraintStart_toEndOf="@+id/imageView3"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -87,7 +91,7 @@
         android:layout_width="48dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/teal_700"
         android:text="+"
         app:layout_constraintBottom_toBottomOf="@+id/quantityNumberTextView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -98,7 +102,7 @@
         android:layout_width="48dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/teal_700"
         android:text="-"
         app:layout_constraintBottom_toBottomOf="@+id/quantityTextView"
         app:layout_constraintStart_toEndOf="@+id/quantityTextView"
@@ -110,6 +114,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="00"
+        android:textColor="#77736c"
         app:layout_constraintBottom_toBottomOf="@+id/quantityMinusButton"
         app:layout_constraintEnd_toStartOf="@+id/quantityPlusButton"
         app:layout_constraintStart_toEndOf="@+id/quantityMinusButton"
