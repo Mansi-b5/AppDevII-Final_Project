@@ -2,6 +2,10 @@ package ca.qc.johnabbott.finalproject.UI;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import com.google.android.material.navigation.NavigationBarView;
@@ -9,6 +13,10 @@ import com.google.android.material.navigation.NavigationBarView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
+import android.view.View;
+
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -26,6 +34,11 @@ import ca.qc.johnabbott.finalproject.viewmodel.OrderViewModel;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.CompoundButton;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.Switch;
+import android.widget.TextView;
 
 
 import java.util.ArrayList;
@@ -37,8 +50,8 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
     private NavigationBarView bottomNavigationView;
+    private Switch switches;
     private DBHandler handler;
-
     private OrderViewModel orderViewModel;
     private CategoryViewModel categoryViewModel;
 
@@ -46,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
         orderViewModel = new OrderViewModel();
         categoryViewModel = new CategoryViewModel();
     }
-
     public OrderViewModel getOrderViewModel() {
         return orderViewModel;
     }
@@ -60,18 +72,46 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         handler = new DBHandler(this);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        switches = findViewById(R.id.switch1);
+
+        binding.switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if(isChecked)
+                {
+                    //MAIN ACTIVITY SWITCH
+                    Resources res = getResources();
+                    Drawable img = res.getDrawable(R.drawable.ic_baseline_dark_mode_24,getTheme());
+                    switches.setThumbDrawable(img);
+                    switches.setThumbTintList(ColorStateList.valueOf(Color.rgb(0,150,136)));
+                    switches.setTrackTintList(ColorStateList.valueOf(Color.rgb(0,150,136)));
+
+//                    if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES)
+//                    {
+//
+//                    }
+
+                }
+                else{
+                    //MAIN ACTIVITY SWITCH
+                    Resources res = getResources();
+                    Drawable img = res.getDrawable(R.drawable.ic_baseline_wb_sunny_24,getTheme());
+                    switches.setThumbDrawable(img);
+                    switches.setThumbTintList(ColorStateList.valueOf(Color.rgb(255,235,59)));
+                    switches.setTrackTintList(ColorStateList.valueOf(Color.rgb(255,235,59)));
+
+
+                }
+
+            }
+        });
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         List<ca.qc.johnabbott.finalproject.Model.MenuItem> list = new ArrayList<>();
-
-
-        //setSupportActionBar(binding.toolbar);
-        //NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-//        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-//        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
         binding.bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
