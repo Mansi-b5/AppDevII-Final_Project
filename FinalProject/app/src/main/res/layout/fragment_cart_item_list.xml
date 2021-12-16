@@ -37,8 +37,8 @@
 
     <TableLayout
         android:id="@+id/checkoutTableLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         app:layout_constraintBottom_toBottomOf="@+id/checkoutButton"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,7 +55,8 @@
                 android:layout_column="0"
                 android:layout_gravity="right"
                 android:paddingHorizontal="8dp"
-                android:text="Subtotal: " />
+                android:text="Subtotal: "
+                android:textColor="#77736c" />
 
             <TextView
                 android:id="@+id/subtotalNumber"
@@ -64,7 +65,8 @@
                 android:layout_column="1"
                 android:layout_gravity="right"
                 android:paddingHorizontal="8dp"
-                android:text="00" />
+                android:text="00"
+                android:textColor="#77736c" />
         </TableRow>
 
         <TableRow
@@ -78,7 +80,8 @@
                 android:layout_column="0"
                 android:layout_gravity="right"
                 android:paddingHorizontal="8dp"
-                android:text="Taxes: " />
+                android:text="Taxes: "
+                android:textColor="#77736c" />
 
             <TextView
                 android:id="@+id/taxesNumber"
@@ -87,7 +90,8 @@
                 android:layout_column="1"
                 android:layout_gravity="right"
                 android:paddingHorizontal="8dp"
-                android:text="00" />
+                android:text="00"
+                android:textColor="#77736c" />
         </TableRow>
 
         <TableRow
@@ -101,7 +105,8 @@
                 android:layout_column="0"
                 android:layout_gravity="right"
                 android:paddingHorizontal="8dp"
-                android:text="Total: " />
+                android:text="Total: "
+                android:textColor="#77736c" />
 
             <TextView
                 android:id="@+id/totalNumber"
@@ -110,7 +115,8 @@
                 android:layout_column="1"
                 android:layout_gravity="right"
                 android:paddingHorizontal="8dp"
-                android:text="00" />
+                android:text="00"
+                android:textColor="#77736c" />
         </TableRow>
 
     </TableLayout>
