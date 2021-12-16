@@ -1,6 +1,7 @@
 package ca.qc.johnabbott.finalproject;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 
 import ca.qc.johnabbott.finalproject.Model.CartItem;
 import ca.qc.johnabbott.finalproject.UI.MainActivity;
+import ca.qc.johnabbott.finalproject.UI.MenuDetails;
 import ca.qc.johnabbott.finalproject.databinding.ListItemCartItemBinding;
 
 import java.text.NumberFormat;
@@ -86,7 +88,13 @@ public class CartItemRecyclerViewAdapter extends RecyclerView.Adapter<CartItemRe
                 notifyDataSetChanged();
                 notifyViewModel();
             });
+
+            binding.detailsButton.setOnClickListener(view -> {
+                Fragment fragment = new MenuDetails(mItem.getMenuItem());
+                cartItemListFragment.getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main,fragment).commit();
+            });
         }
+
 
         private void notifyViewModel() {
             MainActivity mainActivity = (MainActivity) cartItemListFragment.getActivity();

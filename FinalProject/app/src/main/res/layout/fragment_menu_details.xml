@@ -59,100 +59,16 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 
-    <LinearLayout
-        android:id="@+id/size_linearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/description">
-
-        <TextView
-            android:id="@+id/size"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Size : "
-            android:textSize="20dp" />
-
-        <Spinner
-            android:id="@+id/spinnerSize"
-            android:layout_width="165dp"
-            android:layout_height="20dp"
-            android:layout_marginLeft="20dp"
-            android:scrollbarSize="50dp"></Spinner>
-    </LinearLayout>
-
-
     <TextView
         android:id="@+id/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
         android:text="Price"
         android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"></TextView>
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="82dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="82dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/size_linearLayout">
-
-        <TextView
-            android:id="@+id/quantity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Quantity : "
-            app:layout_constraintBottom_toBottomOf="@+id/button2"
-            app:layout_constraintTop_toTopOf="@+id/button2" />
-
-
-        <Button
-            android:id="@+id/quantityMinusButton"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="24dp"
-            android:backgroundTint="@color/black"
-            android:text="-"
-            android:textSize="11sp"
-            app:layout_constraintBottom_toBottomOf="@+id/quantityTextView"
-            app:layout_constraintStart_toEndOf="@+id/quantityTextView"
-            app:layout_constraintTop_toTopOf="@+id/quantityTextView" />
-
-        <TextView
-            android:id="@+id/quantityTextView"
-            android:text="qu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:textSize="16sp"
-            ></TextView>
-
-        <Button
-            android:id="@+id/quantityPlusButton"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="8dp"
-            android:backgroundTint="@color/black"
-            android:text="+"
-            android:textSize="11sp"
-            app:layout_constraintBottom_toBottomOf="@+id/quantityNumberTextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/quantityNumberTextView" />
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/description"></TextView>
 
     <Button
         android:id="@+id/confirmOrderButton"

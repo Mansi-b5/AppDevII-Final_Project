@@ -25,59 +25,29 @@ public class MenuData {
         pizza.add(new MenuItem()
                 .setCategory("Pizza")
                 .setTitle("Cheese")
-                .setSize(Size.SMALL)
+                .setSize(null)
                 .setDescription("Topped with a mix of mozzarella, provolone and parmesan.")
                 .setPrice(10.99)
                 .setQuantity(1)
                 .setImageResourceId(R.drawable.cheese));
-        pizza.add(new MenuItem()
-                .setCategory("Pizza")
-                .setTitle("Cheese")
-                .setSize(Size.MEDIUM)
-                .setDescription("Topped with a mix of mozzarella, provolone and parmesan.")
-                .setPrice(13.99)
-                .setQuantity(1)
-                .setImageResourceId(R.drawable.cheese));
-        pizza.add(new MenuItem()
-                .setCategory("Pizza")
-                .setTitle("Cheese")
-                .setSize(Size.LARGE)
-                .setDescription("Topped with a mix of mozzarella, provolone and parmesan.")
-                .setPrice(15.99)
-                .setQuantity(1)
-                .setImageResourceId(R.drawable.cheese));
+
 
         pizza.add(new MenuItem()
                 .setCategory("Pizza")
                 .setTitle("Vegetarian")
                 .setSize(null)
+
                 .setDescription("Fresh green peppers, onion, tomatoes, mushrooms, and olives.")
                 .setPrice(10.99)
                 .setQuantity(1)
                 .setImageResourceId(R.drawable.vegetarian));
 
-        pizza.add(new MenuItem()
-                .setCategory("Pizza")
-                .setTitle("Vegetarian")
-                .setSize(Size.SMALL)
-                .setDescription("Fresh green peppers, onion, tomatoes, mushrooms, and olives.")
-                .setPrice(10.99)
-                .setQuantity(1)
-                .setImageResourceId(R.drawable.vegetarian));
-
-        pizza.add(new MenuItem()
-                .setCategory("Pizza")
-                .setTitle("Vegetarian")
-                .setSize(Size.MEDIUM)
-                .setDescription("Fresh green peppers, onion, tomatoes, mushrooms, and olives.")
-                .setPrice(10.99)
-                .setQuantity(1)
-                .setImageResourceId(R.drawable.vegetarian));
 
         pizza.add(new MenuItem()
                 .setCategory("Pizza")
                 .setTitle("Pepperoni")
-                .setSize(Size.LARGE)
+                .setSize(null)
+
                 .setDescription("Pepperoni topped with an extra layer of cheese.")
                 .setPrice(10.99)
                 .setQuantity(1)
@@ -86,73 +56,29 @@ public class MenuData {
         pizza.add(new MenuItem()
                 .setCategory("Pizza")
                 .setTitle("All Dressed")
-                .setSize(Size.SMALL)
-                .setDescription("Peppers, onion, tomatoes, mushrooms, olives and pepperoni.")
-                .setPrice(10.99)
-                .setQuantity(1)
-                .setImageResourceId(R.drawable.alldressed));
-        pizza.add(new MenuItem()
-                .setCategory("Pizza")
-                .setTitle("All Dressed")
-                .setSize(Size.MEDIUM)
-                .setDescription("Peppers, onion, tomatoes, mushrooms, olives and pepperoni.")
-                .setPrice(10.99)
-                .setQuantity(1)
-                .setImageResourceId(R.drawable.alldressed));
-        pizza.add(new MenuItem()
-                .setCategory("Pizza")
-                .setTitle("All Dressed")
-                .setSize(Size.LARGE)
+                .setSize(null)
+
                 .setDescription("Peppers, onion, tomatoes, mushrooms, olives and pepperoni.")
                 .setPrice(10.99)
                 .setQuantity(1)
                 .setImageResourceId(R.drawable.alldressed));
 
+
         pizza.add(new MenuItem()
                 .setCategory("Pizza")
                 .setTitle("Hawaiian")
-                .setSize(Size.SMALL)
-                .setDescription("Pineapple and slices of ham topped with an extra layer of cheese.")
-                .setPrice(10.99)
-                .setQuantity(1)
-                .setImageResourceId(R.drawable.hawaiian));
-        pizza.add(new MenuItem()
-                .setCategory("Pizza")
-                .setTitle("Hawaiian")
-                .setSize(Size.MEDIUM)
-                .setDescription("Pineapple and slices of ham topped with an extra layer of cheese.")
-                .setPrice(10.99)
-                .setQuantity(1)
-                .setImageResourceId(R.drawable.hawaiian));
-        pizza.add(new MenuItem()
-                .setCategory("Pizza")
-                .setTitle("Hawaiian")
-                .setSize(Size.LARGE)
+                .setSize(null)
+
                 .setDescription("Pineapple and slices of ham topped with an extra layer of cheese.")
                 .setPrice(10.99)
                 .setQuantity(1)
                 .setImageResourceId(R.drawable.hawaiian));
 
+
         pizza.add(new MenuItem()
                 .setCategory("Pizza")
                 .setTitle("Chicken BBQ")
-                .setSize(Size.SMALL)
-                .setDescription("A topping of spicy barbeque sauce, diced chicken, cilantro, peppers, and onions")
-                .setPrice(10.99)
-                .setQuantity(1)
-                .setImageResourceId(R.drawable.chickenbbq));
-        pizza.add(new MenuItem()
-                .setCategory("Pizza")
-                .setTitle("Chicken BBQ")
-                .setSize(Size.MEDIUM)
-                .setDescription("A topping of spicy barbeque sauce, diced chicken, cilantro, peppers, and onions")
-                .setPrice(10.99)
-                .setQuantity(1)
-                .setImageResourceId(R.drawable.chickenbbq));
-        pizza.add(new MenuItem()
-                .setCategory("Pizza")
-                .setTitle("Chicken BBQ")
-                .setSize(Size.LARGE)
+                .setSize(null)
                 .setDescription("A topping of spicy barbeque sauce, diced chicken, cilantro, peppers, and onions")
                 .setPrice(10.99)
                 .setQuantity(1)

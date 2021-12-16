@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -31,8 +32,9 @@ public class MenuDetails extends Fragment {
     private FragmentMenuDetailsBinding binding;
     private MenuItem menuItem;
 
-    public MenuDetails() {
+    public MenuDetails(MenuItem menuItem) {
 
+        this.menuItem = menuItem;
     }
 
 
@@ -55,29 +57,18 @@ public class MenuDetails extends Fragment {
         super.onViewCreated(view,savedInstanceState);
 
         MainActivity mainActivity = (MainActivity) getActivity();
-        final Spinner spinner = binding.spinnerSize;
-        spinner.setAdapter(new ArrayAdapter<Size>(mainActivity,R.layout.support_simple_spinner_dropdown_item,Size.values()));
 
 
-        binding.title.setText(mainActivity.getOrderViewModel().getItem().getTitle());
-//        mainActivity.getOrderViewModel().getItem().setQuantity(1);
-//        binding.quantityTextView.setText(mainActivity.getOrderViewModel().getItem().getQuantity());
-        binding.imageView.setImageResource(mainActivity.getOrderViewModel().getItem().getImageResourceId());
-        binding.description.setText(mainActivity.getOrderViewModel().getItem().getDescription());
+        binding.title.setText(menuItem.getTitle());
 
-        if(mainActivity.getOrderViewModel().getItem().getCategory().equals("Pizza"))
-        {
-            binding.sizeLinearLayout.setVisibility(View.VISIBLE);
-        }
-        else
-            binding.sizeLinearLayout.setVisibility(View.GONE);
+        binding.imageView.setImageResource(menuItem.getImageResourceId());
+        binding.description.setText(menuItem.getDescription());
 
         binding.confirmOrderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 MainActivity activity = (MainActivity) getActivity();
-                menuItem.setImageResourceId(R.drawable.cart_placeholder_image);
                 List<CartItem> currentCartItems = activity.getOrderViewModel().getOrder().getCartItemList();
                 String snackBarText = "";
 
@@ -108,56 +99,6 @@ public class MenuDetails extends Fragment {
                         .show();
             }
         });
-
-
-
-
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Object item = adapterView.getItemAtPosition(i).toString();
-
-         
-                if(item.equals("MEDIUM"))
-                {
-                    binding.price.setText(String.valueOf(mainActivity.getOrderViewModel().getItem().getPrice() + 3.00));
-                    notifyViewModel();
-                }
-                else if(item.equals("LARGE")){
-                    binding.price.setText(String.valueOf(mainActivity.getOrderViewModel().getItem().getPrice() + 5.00));
-                    notifyViewModel();
-                }else{
-                    binding.price.setText(String.valueOf(mainActivity.getOrderViewModel().getItem().getPrice()));
-                    notifyViewModel();
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
-
-
-//        binding.quantityMinusButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                int old = Integer.parseInt(binding.quantityTextView.getText().toString());
-//                if(old <= 1) {
-//                    return;
-//                }
-//                binding.quantityTextView.setText(--old);
-//            }
-//        });
-//
-//        binding.quantityPlusButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                int old = Integer.parseInt(binding.quantityTextView.getText().toString());
-//                binding.quantityTextView.setText(++old);
-//            }
-//        });
 
 
     }
