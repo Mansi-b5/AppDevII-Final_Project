@@ -81,9 +81,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.fragment_menu_group,viewGroup,false);
         }
 
-
-
-
         TextView textView = view.findViewById(R.id.expandedListGroup);
         LinearLayout linearLayout = view.findViewById(R.id.cardViewColor);
         ImageView imageView = view.findViewById(R.id.image);
@@ -142,8 +139,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
         ImageButton addToCart = view.findViewById(R.id.addToCartImageButton);
         addToCart.setOnClickListener(view1 -> {
-//            MainActivity activity = (MainActivity) menuCategoryFragment.getActivity();
-            /*menuItem.setImageResourceId(R.drawable.cart_placeholder_image);*/
             List<CartItem> currentCartItems = activity.getOrderViewModel().getOrder().getCartItemList();
             String snackBarText = "";
 

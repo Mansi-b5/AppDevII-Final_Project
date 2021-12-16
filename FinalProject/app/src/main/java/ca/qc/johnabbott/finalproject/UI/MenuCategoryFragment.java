@@ -61,6 +61,7 @@ public class MenuCategoryFragment extends Fragment {
             listHeader = new ArrayList<>(items.keySet());
             expandableListView.setAdapter(new ExpandableListAdapter(listHeader, items, this));
             expandableListView.setGroupIndicator(null);
+            openCategoryIfNeeded();
         } catch (DatabaseException e) {
             e.printStackTrace();
         }
@@ -76,5 +77,28 @@ public class MenuCategoryFragment extends Fragment {
         }
 
         return hashMap;
+    }
+
+    private void openCategoryIfNeeded() {
+        String toOpen = ((MainActivity)getActivity()).getCategoryViewModel().getCategoryToOpen();
+        ((MainActivity)getActivity()).getCategoryViewModel().setCategoryToOpen(null);
+        if(toOpen == null) {
+            return;
+        }
+
+        switch (toOpen) {
+            case "PIZZAS":
+                expandableListView.expandGroup(0);
+                expandableListView.setSelection(0);
+                break;
+            case "DRINKS":
+                expandableListView.expandGroup(2);
+                expandableListView.setSelection(2);
+                break;
+            case "SIDES":
+                expandableListView.expandGroup(3);
+                expandableListView.setSelection(3);
+                break;
+        }
     }
 }
