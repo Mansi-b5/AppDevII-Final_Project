@@ -31,19 +31,23 @@ public class MenuData {
                 .setQuantity(1)
                 .setImageResourceId(R.drawable.cheese));
 
+
         pizza.add(new MenuItem()
                 .setCategory("Pizza")
                 .setTitle("Vegetarian")
                 .setSize(null)
+
                 .setDescription("Fresh green peppers, onion, tomatoes, mushrooms, and olives.")
                 .setPrice(10.99)
                 .setQuantity(1)
                 .setImageResourceId(R.drawable.vegetarian));
 
+
         pizza.add(new MenuItem()
                 .setCategory("Pizza")
                 .setTitle("Pepperoni")
                 .setSize(null)
+
                 .setDescription("Pepperoni topped with an extra layer of cheese.")
                 .setPrice(10.99)
                 .setQuantity(1)
@@ -53,19 +57,23 @@ public class MenuData {
                 .setCategory("Pizza")
                 .setTitle("All Dressed")
                 .setSize(null)
+
                 .setDescription("Peppers, onion, tomatoes, mushrooms, olives and pepperoni.")
                 .setPrice(10.99)
                 .setQuantity(1)
                 .setImageResourceId(R.drawable.alldressed));
 
+
         pizza.add(new MenuItem()
                 .setCategory("Pizza")
                 .setTitle("Hawaiian")
                 .setSize(null)
+
                 .setDescription("Pineapple and slices of ham topped with an extra layer of cheese.")
                 .setPrice(10.99)
                 .setQuantity(1)
                 .setImageResourceId(R.drawable.hawaiian));
+
 
         pizza.add(new MenuItem()
                 .setCategory("Pizza")
