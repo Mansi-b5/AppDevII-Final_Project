@@ -90,10 +90,7 @@ public class MainActivity extends AppCompatActivity {
                     switches.setThumbTintList(ColorStateList.valueOf(Color.rgb(0,150,136)));
                     switches.setTrackTintList(ColorStateList.valueOf(Color.rgb(0,150,136)));
 
-//                    if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES)
-//                    {
-//
-//                    }
+                    findViewById(R.id.nav_host_fragment_content_main).setBackgroundResource(R.drawable.background);
 
                 }
                 else{
@@ -104,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
                     switches.setThumbTintList(ColorStateList.valueOf(Color.rgb(255,235,59)));
                     switches.setTrackTintList(ColorStateList.valueOf(Color.rgb(255,235,59)));
 
+                    findViewById(R.id.nav_host_fragment_content_main).setBackgroundResource(R.drawable.background_gradient);
 
                 }
 

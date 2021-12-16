@@ -18,6 +18,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 import ca.qc.johnabbott.finalproject.CartItemListFragment;
 import ca.qc.johnabbott.finalproject.Model.CartItem;

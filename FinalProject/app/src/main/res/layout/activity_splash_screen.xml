@@ -5,7 +5,8 @@
     android:id="@+id/splashscreen_constraintlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#002C73"
+    android:angle="270"
+    android:background="@drawable/gradient5"
     android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen"
     tools:context=".SplashScreenActivity">
 
@@ -22,13 +23,13 @@
 
     <ImageView
         android:id="@+id/logo_imageview"
-        android:layout_width="413dp"
-        android:layout_height="163dp"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:scaleType="fitXY"
         android:contentDescription="Logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/logo"
+        tools:layout_editor_absoluteX="-1dp"
+        tools:layout_editor_absoluteY="0dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

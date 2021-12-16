@@ -13,6 +13,7 @@
 
         <TextView
             android:id="@+id/textItem"
+            android:textColor="#77736c"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
@@ -20,7 +21,6 @@
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:text="item"
-            android:textColor="@android:color/black"
             android:textSize="20dp" />
 
         <ImageButton
@@ -29,7 +29,7 @@
             android:layout_height="48dp"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="25dp"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="#009688"
             android:paddingTop="10dp"
             app:srcCompat="@drawable/ic_baseline_white_add_24"
             tools:ignore="SpeakableTextPresentCheck" />
