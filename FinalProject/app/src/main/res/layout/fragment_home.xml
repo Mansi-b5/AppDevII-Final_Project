@@ -5,7 +5,8 @@
     android:id="@+id/parentRelative1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.HomeFragment">
+    tools:context=".UI.HomeFragment"
+    >
 
     <TextView
         android:id="@+id/deals_textview"
@@ -15,7 +16,6 @@
         android:text="DEALS"
         android:textSize="30sp"
         android:textStyle="bold"
-        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

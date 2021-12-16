@@ -2,6 +2,7 @@ package ca.qc.johnabbott.finalproject.UI;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -73,6 +74,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
+            setTheme(R.style.DarkAppTheme);
+        }
+
         handler = new DBHandler(this);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -107,8 +112,18 @@ public class MainActivity extends AppCompatActivity {
 
                 }
 
+                if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                }
+                finish();
+                startActivity(new Intent(MainActivity.this, MainActivity.this.getClass()));
+
             }
         });
+
+
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         List<ca.qc.johnabbott.finalproject.Model.MenuItem> list = new ArrayList<>();
